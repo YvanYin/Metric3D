@@ -223,7 +223,7 @@ We appreciate efforts from the contributors of [mmcv](https://github.com/open-mm
 @article{yin2023metric,
   title={Metric3D: Towards Zero-shot Metric 3D Prediction from A Single Image},
   author={Wei Yin, Chi Zhang, Hao Chen, Zhipeng Cai, Gang Yu, Kaixuan Wang, Xiaozhi Chen, Chunhua Shen},
-  booktitle={ICCV},,
+  booktitle={ICCV},
   year={2023}
 }
 ```
