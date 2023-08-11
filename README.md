@@ -4,7 +4,7 @@
 
 Authors: [Wei Yin](https://yvanyin.net/)<sup>1*</sup>,
 [Chi Zhang](https://icoz69.github.io/)<sup>2*</sup>,
-[Hao Chen](https://scholar.google.com/citations?hl=zh-CN&user=i-2ghuYAAAAJ)<sup>1</sup>,
+[Hao Chen](https://scholar.google.com/citations?hl=zh-CN&user=i-2ghuYAAAAJ)<sup>3</sup>,
 [Zhipeng Cai](https://zhipengcai.github.io/)<sup>3</sup>,
 [Gang Yu](https://www.skicyyu.org/)<sup>4</sup>,
 [Kaixuan Wang](https://wang-kx.github.io/)<sup>1</sup>,
