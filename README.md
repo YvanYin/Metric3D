@@ -11,7 +11,7 @@ Authors: [Wei Yin](https://yvanyin.net/)<sup>1*</sup>,
 [Xiaozhi Chen](https://xiaozhichen.github.io/)<sup>1</sup>,
 [Chunhua Shen](https://cshen.github.io/)<sup>3</sup>
 
-### [Arxiv](https://arxiv.org/abs/2307.08695) | [Video](https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3) | Hugging Face 🤗 (Comming Soon)
+### [Arxiv](https://arxiv.org/abs/2307.10984) | [Video](https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3) | Hugging Face 🤗 (Comming Soon)
 [@JUGGHM](https://github.com/JUGGHM)<sup>1,5</sup>  will also maintain this project. 
 
 ## News and TO DO LIST
