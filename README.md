@@ -67,8 +67,16 @@ All three images are downloaded from [unplash](https://unsplash.com/) and put in
 ### 3D metric reconstruction, Metric3D × DroidSLAM
 Metric3D can also provide scale information for DroidSLAM, help to solve the scale drift problem for better trajectories. (Left: Droid-SLAM (mono). Right: Droid-SLAM with Metric-3D)
 
+#### Bird Eyes' View (Left: Droid-SLAM (mono). Right: Droid-SLAM with Metric-3D)
+
 <div align=center>
 <img src="media/gifs/0028.gif"> 
+</div>
+
+### Front View
+
+<div align=center>
+<img src="media/gifs/0028_fv.gif"> 
 </div>
 
 #### KITTI odemetry evaluation (Translational RMS drift (t_rel, ↓) / Rotational RMS drift (r_rel, ↓))
