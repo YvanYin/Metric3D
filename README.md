@@ -1,4 +1,4 @@
-# 🚀 Metric3D (ICCV23) 🚀
+# 🚀 MetricDepth (ICCV23) 🚀
 
 **The is official PyTorch implementation of paper "Metric3D: Towards Zero-shot Metric 3D Prediction from A Single Image" (Metric 3D)**
 
