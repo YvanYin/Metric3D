@@ -241,4 +241,4 @@ We appreciate efforts from the contributors of [mmcv](https://github.com/open-mm
 
 ## License and Contact
 
-The *Metric 3D* code is under a 2-clause BSD License for non-commercial usage. For further questions, contact Dr. Wei Yin  [yvanwy@outlook.com] and Mr. Mu Hu [mhuam@connect.ust.hk].
+The *Metric 3D* code is under a GPLv3 License for non-commercial usage. For further questions, contact Dr. Wei Yin  [yvanwy@outlook.com] and Mr. Mu Hu [mhuam@connect.ust.hk].
