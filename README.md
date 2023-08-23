@@ -24,19 +24,7 @@ Authors: [Wei Yin](https://yvanyin.net/)<sup>1*</sup>,
 
 ##  🌼 Abstract
 Reconstructing accurate 3D scenes from images is a long-standing vision task. Due to the ill-posedness of the
-single-image reconstruction problem, most well-established methods are built upon multi-view geometry. 
-
-- State-of-the-art (SOTA) monocular metric depth estimation methods can only handle a single camera model and are unable to perform mixed-data training due to the metric ambiguity. 
-- Meanwhile, SOTA monocular methods trained on large mixed datasets achieve zero-shot generalization by learning affine-invariant depths, which cannot recover real-world metrics.
-
-In this work, we show that the key to a zero-shot single-view metric depth model lies in the combination of large-scale data training and resolving the metric ambiguity from various camera models. 
-
-To recover metric depth from a monocular image, we observe that
-- Most objects are unique in scale
-- Once the camera intrinsic and the pose of an object is fixed, the object image size is determined.
-- If the intrinsic remains unknown, scale ambiguity will make this task ill-posed.   
-
-Based on such observations, we propose a canonical camera space transformation module, which explicitly addresses the ambiguity problems and can be effortlessly plugged into existing monocular models. Equipped with our module, monocular models can be stably trained over 8 million of images with thousands of camera models, resulting in zero-shot generalization to in-the-wild images with unseen camera set.
+single-image reconstruction problem, most well-established methods are built upon multi-view geometry. State-of-the-art (SOTA) monocular metric depth estimation methods can only handle a single camera model and are unable to perform mixed-data training due to the metric ambiguity. Meanwhile, SOTA monocular methods trained on large mixed datasets achieve zero-shot generalization by learning affine-invariant depths, which cannot recover real-world metrics. In this work, we show that the key to a zero-shot single-view metric depth model lies in the combination of large-scale data training and resolving the metric ambiguity from various camera models. We propose a canonical camera space transformation module, which explicitly addresses the ambiguity problems and can be effortlessly plugged into existing monocular models. Equipped with our module, monocular models can be stably trained over **8 Million images** with **several Kilo camera models**, resulting in **zero-shot** generalization to **in-the-wild** images with unseen camera set.
 
 ### Fully zero-shot state-of-the-art mono-depth
 
