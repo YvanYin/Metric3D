@@ -33,7 +33,7 @@ single-image reconstruction problem, most well-established methods are built upo
 
 ## 🎩 Fully zero-shot state-of-the-art mono-depth
 
-### 🏆 Highlights: The Champion of [2nd Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC) in CVPR 2023 🏆
+### Highlights: The Champion 🏆 of [2nd Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC) in CVPR 2023 
 
 <div align=center>
 <img src="media/screenshots/challenge.PNG">
