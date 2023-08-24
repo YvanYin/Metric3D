@@ -15,7 +15,7 @@ Authors: [Wei Yin](https://yvanyin.net/)<sup>1*</sup>,
 [@JUGGHM](https://github.com/JUGGHM)<sup>1,5</sup>  will also maintain this project. 
 
 ### The Champion of [2nd Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC) in CVPR 2023
-### Zero-shot testing on NYU and KITTI, comparable performance against SoTA supervised methods
+### Zero-shot testing on NYU and KITTI, Comparable with SoTA Supervised methods
 
 ## News and TO DO LIST
 - [ ] Stronger models and tiny models
