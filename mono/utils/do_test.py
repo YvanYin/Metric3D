@@ -306,7 +306,7 @@ def do_scalecano_test_with_custom_data(
                 # for r in [0.9, 1.0, 1.1]:
                 #     for f in [600, 800, 1000, 1250, 1500]:
                 for r in [1.0]:
-                    for f in 1000:
+                    for f in [1000]:
                         #f_scale = f
                         f_scale = f * (rgb_origin.shape[0] + rgb_origin.shape[1]) / (cfg.data_basic.canonical_space['img_size'][0] + cfg.data_basic.canonical_space['img_size'][1])
                         pcd = reconstruct_pcd(pred_depth, f_scale * r, f_scale * (2 - r), intrinsic[2], intrinsic[3])
