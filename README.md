@@ -183,7 +183,7 @@ More models are on the way...
 
 ### Dataset Mode
 1. put the trained ckpt file ```model.pth``` in ```weight/```.
-2. generate data annotation by following the code ```data/gene_annos_kitti_demo.py```, which includes 'rgb', (optional) 'intrinsic', (optional) 'depth', (optional) 'depth_scale'.
+2. generate data annotation by following the code ```data/gene_annos_kitti_demo.py```, which includes 'rgb', (required) 'intrinsic', (required) 'depth', (optional) 'depth_scale'. Note the 'depth_scale' is the scale factor for GT labels. e.g. to keep the precision, the kitti GT depths are scaled with 256. 
 3. change the 'test_data_path' in ```test_*.sh``` to the ```*.json``` path. 
 4. run ```source test_kitti.sh``` or ```source test_nyu.sh```.
 
