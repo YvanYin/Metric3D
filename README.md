@@ -191,7 +191,13 @@ More models are on the way...
 1. put the trained ckpt file ```model.pth``` in ```weight/```.
 2. change the 'test_data_path' in ```test.sh``` to the image folder path. 
 3. run ```source test.sh```.
-As no intrinsics are provided, we provided by default 9 settings of focal length.
+Note: if you do not know the intrinsics, we will randomly set the intrinsic parameters. If you know the paired focal length, please modify the follow code in ```mono/utils/.py```. please modify the 'intrinsic', the format is [fx, fy, cx, cy].
+```
+def load_data(path: str):
+    rgbs = glob.glob(path + '/*.jpg') + glob.glob(path + '/*.png')
+    data = [{'rgb':i, 'depth':None, 'intrinsic': None, 'filename':os.path.basename(i), 'folder': i.split('/')[-3]} for i in rgbs]
+    return data
+```
 
 ## ❓ Q & A
 ### Q1: Why depth maps look good but pointclouds are distorted?
