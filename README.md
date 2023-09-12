@@ -191,7 +191,7 @@ More models are on the way...
 1. put the trained ckpt file ```model.pth``` in ```weight/```.
 2. change the 'test_data_path' in ```test.sh``` to the image folder path. 
 3. run ```source test.sh```.
-Note: if you do not know the intrinsics, we will randomly set the intrinsic parameters. If you know the paired focal length, please modify the follow code in ```mono/utils/custom_data.py```. please modify the 'intrinsic', the format is [fx, fy, cx, cy].
+Note: if you do not know the intrinsics, we will randomly set the intrinsic parameters. The problem is the predicted depth has no metric. However, if you know the paired focal length, please modify the following code in ```mono/utils/custom_data.py```. Set the 'intrinsic' with the format [fx, fy, cx, cy].
 ```
 def load_data(path: str):
     rgbs = glob.glob(path + '/*.jpg') + glob.glob(path + '/*.png')
