@@ -165,13 +165,13 @@ Intrinsics of the canonical camera is set bellow:
         focal_length=1000.0,
     ),
 ```
-where cx and cy is set to be half of the image size.
+where cx and cy is set to be half of the image size. You do not need to adjust the canonical focal length, otherwise the metric is not accurate. 
 
 Inference settings are defined as
 ```
     crop_size = (512, 1088),
 ```
-where the images will be first resized and padded as the ```crop_size``` and then fed into the model.
+where the images will be resized and padded as the ```crop_size``` and then fed into the model.
 
 ## ✈️ Inference
 ### Download Checkpoint
