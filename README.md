@@ -162,7 +162,6 @@ In ```mono/configs``` we provide different config setups.
 Intrinsics of the canonical camera is set bellow: 
 ```
     canonical_space = dict(
-        img_size=(512, 960),
         focal_length=1000.0,
     ),
 ```
@@ -170,11 +169,9 @@ where cx and cy is set to be half of the image size.
 
 Inference settings are defined as
 ```
-    depth_range=(0, 1),
-    depth_normalize=(0.3, 150),
     crop_size = (512, 1088),
 ```
-where the images will be first resized as the ```crop_size``` and then fed into the model.
+where the images will be first resized and padded as the ```crop_size``` and then fed into the model.
 
 ## ✈️ Inference
 ### Download Checkpoint
