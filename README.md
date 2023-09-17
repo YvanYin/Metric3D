@@ -204,7 +204,7 @@ def load_data(path: str):
 Because the focal length is not properly set! Please find a proper focal length by modifying codes [here](mono/utils/do_test.py#309) yourself.  
 
 ### Q1.2: Why depth maps look good but scales are not precise?
-If the intrinsics are correct, please try different **resolutions** for  ``` crop_size = (512, 1088) ``` in the config file. From our experience, you could try (544, 928), (768, 1088), (512, 992), (480, 1216), (1216, 1952), or some resolutions close to them as you like. Generally, larger resolutions are better for driving scenarios and smaller for indoors.  
+If the intrinsics are correct, please try different **resolutions** for  ``` crop_size = (512, 1088) ``` in the config file. From our experience, you could try (544, 928), (768, 1088), (512, 992), (480, 1216), (1216, 1952), or some resolutions close to them as you like. Generally, larger resolutions are better for driving scenarios and smaller ones for indoors.  
 
 ### Q2: Why the pointclouds are too slow to be generated?
 Because the images are too large! Use smaller ones instead. 
