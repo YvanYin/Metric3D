@@ -200,16 +200,17 @@ def load_data(path: str):
 ```
 
 ## ❓ Q & A
-### Q1: Why depth maps look good but pointclouds are distorted?
+### Q1.1: Why depth maps look good but pointclouds are distorted?
 Because the focal length is not properly set! Please find a proper focal length by modifying codes [here](mono/utils/do_test.py#309) yourself.  
+
+### Q1.2: Why depth maps look good but scales are not precise?
+If the intrinsics are correct, please try different ''resolutions'' for  ``` crop_size = (512, 1088) ``` in the config file. From our experience, you could try (544, 928), (768, 1088), (512, 992), (480, 1216), (1216, 1952), or some resolutions close to them as you like. Generally, larger resolutions are better for driving scenarios and smaller for indoors.  
 
 ### Q2: Why the pointclouds are too slow to be generated?
 Because the images are too large! Use smaller ones instead. 
 
 ### Q3: Why predicted depth maps are not satisfactory?
-- First be sure all black padding regions at image boundaries are cropped out.
-- Then try different ''resolutions'' for  ``` crop_size = (512, 1088) ``` in the config file. From our experience, you could try (544, 928), (768, 1088), (512, 992), (480, 1216), (1216, 1952), or some resolutions close to them as you like. Generally, larger resolutions are better for driving scenarios and smaller for indoors.
-- Besides, metric 3D is not almighty. Some objects (chandeliers, drones...) / camera views (aerial view, bev...) do not occur frequently in the training datasets. We will going deeper into this and release more powerful solutions.
+First be sure all black padding regions at image boundaries are cropped out. Besides, metric 3D is not almighty. Some objects (chandeliers, drones...) / camera views (aerial view, bev...) do not occur frequently in the training datasets. We will going deeper into this and release more powerful solutions.
 
 ## 🍭 Acknowledgement
 This work is empowered by DJI Automotive<sup>1</sup>
