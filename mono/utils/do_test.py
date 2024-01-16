@@ -241,7 +241,8 @@ def do_scalecano_test_with_custom_data(
     dam_global = MetricAverageMeter(['abs_rel', 'rmse', 'silog', 'delta1', 'delta2', 'delta3'])
     
     for i, an in tqdm(enumerate(test_data)):
-        rgb_origin = cv2.imread(an['rgb'])[:, :, ::-1].copy()
+        #rgb_origin = cv2.imread(an['rgb'])[:, :, ::-1].copy()
+        rgb_origin = cv2.imread(an['rgb'])
         if an['depth'] is not None:
             gt_depth = cv2.imread(an['depth'], -1)
             gt_depth_scale = an['depth_scale']
