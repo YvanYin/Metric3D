@@ -14,6 +14,7 @@ Authors: [Wei Yin](https://yvanyin.net/)<sup>1*</sup>,
 ### [Arxiv](https://arxiv.org/abs/2307.10984) | [Video](https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3) | [Hugging Face 🤗](https://huggingface.co/spaces/JUGGHM/Metric3D)
 [@JUGGHM](https://github.com/JUGGHM)<sup>1,5</sup>  will also maintain this project. 
 
+### Metric 3D V2 Comming Soon... Early access in the [🤗](https://huggingface.co/spaces/JUGGHM/Metric3D)
 ### The Champion of [2nd Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC) in CVPR 2023
 ### Zero-shot testing on NYU and KITTI, Comparable with SoTA Supervised methods
 
