@@ -11,15 +11,15 @@ Authors: [Wei Yin](https://yvanyin.net/)<sup>1*</sup>,
 [Xiaozhi Chen](https://xiaozhichen.github.io/)<sup>1</sup>,
 [Chunhua Shen](https://cshen.github.io/)<sup>3</sup>
 
-### [Arxiv](https://arxiv.org/abs/2307.10984) | [Video](https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3) | Hugging Face 🤗 (Comming Soon)
+### [Arxiv](https://arxiv.org/abs/2307.10984) | [Video](https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3) | [Hugging Face 🤗](https://huggingface.co/spaces/JUGGHM/Metric3D)
 [@JUGGHM](https://github.com/JUGGHM)<sup>1,5</sup>  will also maintain this project. 
 
 ### The Champion of [2nd Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC) in CVPR 2023
 ### Zero-shot testing on NYU and KITTI, Comparable with SoTA Supervised methods
 
 ## News and TO DO LIST
-- [ ] Stronger models and tiny models
-- [ ] Hugging face
+- More models are comming soon
+- `[2024/1/17]` An initial version of Hugging Face demo (CPU) released (vit models supported)
 - `[2023/8/10]` Inference codes, pretrained weights, and demo released.
 
 ##  🌼 Abstract
