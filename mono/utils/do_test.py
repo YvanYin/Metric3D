@@ -4,7 +4,7 @@ import logging
 import os
 import os.path as osp
 from mono.utils.avg_meter import MetricAverageMeter
-from mono.utils.visualization import save_val_imgs, create_html, save_raw_imgs
+from mono.utils.visualization import save_val_imgs, create_html, save_raw_imgs, save_normal_val_imgs
 import cv2
 from tqdm import tqdm
 import numpy as np
@@ -153,6 +153,7 @@ def get_prediction(
         cam_model=cam_model,
     )
     pred_depth, confidence, output_dict = model.module.inference(data)
+    pred_depth = pred_depth
     pred_depth = pred_depth.squeeze()
     pred_depth = pred_depth[pad_info[0] : pred_depth.shape[0] - pad_info[1], pad_info[2] : pred_depth.shape[1] - pad_info[3]]
     if gt_depth is not None:
@@ -170,7 +171,7 @@ def get_prediction(
         pred_depth_scale = None
         scale = None
 
-    return pred_depth, pred_depth_scale, scale
+    return pred_depth, pred_depth_scale, scale, output_dict
 
 def transform_test_data_scalecano(rgb, intrinsic, data_basic):
     """
@@ -241,8 +242,9 @@ def do_scalecano_test_with_custom_data(
     dam_global = MetricAverageMeter(['abs_rel', 'rmse', 'silog', 'delta1', 'delta2', 'delta3'])
     
     for i, an in tqdm(enumerate(test_data)):
-        #rgb_origin = cv2.imread(an['rgb'])[:, :, ::-1].copy()
-        rgb_origin = cv2.imread(an['rgb'])
+    #for i, an in enumerate(test_data):
+        print(an['rgb'])
+        rgb_origin = cv2.imread(an['rgb'])[:, :, ::-1].copy()
         if an['depth'] is not None:
             gt_depth = cv2.imread(an['depth'], -1)
             gt_depth_scale = an['depth_scale']
@@ -254,9 +256,11 @@ def do_scalecano_test_with_custom_data(
         intrinsic = an['intrinsic']
         if intrinsic is None:
             intrinsic = [1000.0, 1000.0, rgb_origin.shape[1]/2, rgb_origin.shape[0]/2]
+            # intrinsic = [542.0, 542.0, 963.706, 760.199]
+            print(intrinsic)
         rgb_input, cam_models_stacks, pad, label_scale_factor = transform_test_data_scalecano(rgb_origin, intrinsic, cfg.data_basic)
 
-        pred_depth, pred_depth_scale, scale = get_prediction(
+        pred_depth, pred_depth_scale, scale, output = get_prediction(
             model = model,
             input = rgb_input,
             cam_model = cam_models_stacks,
@@ -267,9 +271,11 @@ def do_scalecano_test_with_custom_data(
             ori_shape=[rgb_origin.shape[0], rgb_origin.shape[1]],
         )
 
+        pred_depth = (pred_depth > 0) * (pred_depth < 300) * pred_depth
         if gt_depth_flag:
 
             pred_depth = torch.nn.functional.interpolate(pred_depth[None, None, :, :], (gt_depth.shape[0], gt_depth.shape[1]), mode='bilinear').squeeze() # to original size
+
             gt_depth = torch.from_numpy(gt_depth).cuda()
 
             pred_depth_median = pred_depth * gt_depth[gt_depth != 0].median() / pred_depth[gt_depth != 0].median()
@@ -279,6 +285,7 @@ def do_scalecano_test_with_custom_data(
             dam.update_metrics_gpu(pred_depth, gt_depth, mask, is_distributed)
             dam_median.update_metrics_gpu(pred_depth_median, gt_depth, mask, is_distributed)
             dam_global.update_metrics_gpu(pred_global, gt_depth, mask, is_distributed)
+            print(gt_depth[gt_depth != 0].median() / pred_depth[gt_depth != 0].median(), )
         
         if i % save_interval == 0:
             os.makedirs(osp.join(save_imgs_dir, an['folder']), exist_ok=True)
@@ -295,26 +302,56 @@ def do_scalecano_test_with_custom_data(
                 osp.join(an['folder'], an['filename']),
                 save_imgs_dir,
             )
+            #save_raw_imgs(pred_depth.detach().cpu().numpy(), rgb_torch, osp.join(an['folder'], an['filename']), save_imgs_dir, 1000.0)
 
             # pcd
             pred_depth = pred_depth.detach().cpu().numpy()
-            pcd = reconstruct_pcd(pred_depth, intrinsic[0], intrinsic[1], intrinsic[2], intrinsic[3])
-            os.makedirs(osp.join(save_pcd_dir, an['folder']), exist_ok=True)
-            
-            if an['intrinsic'] != None:
-                save_point_cloud(pcd.reshape((-1, 3)), rgb_origin.reshape(-1, 3), osp.join(save_pcd_dir, an['folder'], an['filename'][:-4]+'.ply'))
-            else:
-                # for r in [0.9, 1.0, 1.1]:
-                #     for f in [600, 800, 1000, 1250, 1500]:
+            #pcd = reconstruct_pcd(pred_depth, intrinsic[0], intrinsic[1], intrinsic[2], intrinsic[3])
+            #os.makedirs(osp.join(save_pcd_dir, an['folder']), exist_ok=True)
+            #save_point_cloud(pcd.reshape((-1, 3)), rgb_origin.reshape(-1, 3), osp.join(save_pcd_dir, an['folder'], an['filename'][:-4]+'.ply'))
+
+            if an['intrinsic'] == None:
+                #for r in [0.9, 1.0, 1.1]:
                 for r in [1.0]:
+                    #for f in [600, 800, 1000, 1250, 1500]:
                     for f in [1000]:
-                        #f_scale = f
-                        f_scale = f * (rgb_origin.shape[0] + rgb_origin.shape[1]) / (cfg.data_basic.canonical_space['img_size'][0] + cfg.data_basic.canonical_space['img_size'][1])
-                        pcd = reconstruct_pcd(pred_depth, f_scale * r, f_scale * (2 - r), intrinsic[2], intrinsic[3])
-                        fstr = '_fx_' + str(int(f_scale * r)) + '_fy_' + str(int(f_scale * (2-r)))
-                        save_point_cloud(pcd.reshape((-1, 3)), rgb_origin.reshape(-1, 3), osp.join(save_pcd_dir, an['folder'], an['filename'][:-4]+fstr+'.ply'))
+                        pcd = reconstruct_pcd(pred_depth, f * r, f * (2-r), intrinsic[2], intrinsic[3])
+                        fstr = '_fx_' + str(int(f * r)) + '_fy_' + str(int(f * (2-r)))
+                        os.makedirs(osp.join(save_pcd_dir, an['folder']), exist_ok=True)
+                        save_point_cloud(pcd.reshape((-1, 3)), rgb_origin.reshape(-1, 3), osp.join(save_pcd_dir, an['folder'], an['filename'][:-4] + fstr +'.ply'))
     
-    if gt_depth_flag:
+        if "normal_out_list" in output.keys():
+            
+            normal_out_list = output['normal_out_list'] 
+            pred_normal = normal_out_list[0][:, :3, :, :] # (B, 3, H, W)
+            H, W = pred_normal.shape[2:]
+            pred_normal = pred_normal[:, :, pad[0]:H-pad[1], pad[2]:W-pad[3]]
+
+            gt_normal = None
+            #if gt_normal_flag:
+            if False:
+                pred_normal = torch.nn.functional.interpolate(pred_normal, size=gt_normal.shape[2:], mode='bilinear', align_corners=True)    
+                gt_normal = cv2.imread(norm_path)
+                gt_normal = cv2.cvtColor(gt_normal, cv2.COLOR_BGR2RGB) 
+                gt_normal = np.array(gt_normal).astype(np.uint8)
+                gt_normal = ((gt_normal.astype(np.float32) / 255.0) * 2.0) - 1.0
+                norm_valid_mask = (np.linalg.norm(gt_normal, axis=2, keepdims=True) > 0.5)
+                gt_normal = gt_normal * norm_valid_mask               
+                gt_normal_mask = ~torch.all(gt_normal == 0, dim=1, keepdim=True)
+                dam.update_normal_metrics_gpu(pred_normal, gt_normal, gt_normal_mask, cfg.distributed)# save valiad normal
+
+            if i % save_interval == 0:
+                save_normal_val_imgs(iter, 
+                                    pred_normal, 
+                                    gt_normal if gt_normal is not None else torch.ones_like(pred_normal, device=pred_normal.device),
+                                    rgb_torch, # data['input'], 
+                                    osp.join(an['folder'], 'normal_'+an['filename']), 
+                                    save_imgs_dir,
+                                    )
+
+
+    #if gt_depth_flag:
+    if False:
         eval_error = dam.get_metrics()
         print('w/o match :', eval_error)
 

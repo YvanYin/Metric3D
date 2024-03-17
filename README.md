@@ -1,138 +1,199 @@
-# 🚀 MetricDepth (ICCV23) 🚀
+# 🚀 Metric3D Project 🚀
 
-**The is official PyTorch implementation of paper "Metric3D: Towards Zero-shot Metric 3D Prediction from A Single Image" (Metric 3D)**
+**Official PyTorch implementation of "Metric3D: Towards Zero-shot Metric 3D Prediction from A Single Image" and "Metric3Dv2: A Versatile Monocular Geometric Foundation Model for Zero-shot Metric Depth and Surface Normal Estimation"**
 
-Authors: [Wei Yin](https://yvanyin.net/)<sup>1*</sup>,
-[Chi Zhang](https://icoz69.github.io/)<sup>2*</sup>,
-[Hao Chen](https://scholar.google.com/citations?hl=zh-CN&user=i-2ghuYAAAAJ)<sup>3</sup>,
-[Zhipeng Cai](https://zhipengcai.github.io/)<sup>3</sup>,
-[Gang Yu](https://www.skicyyu.org/)<sup>4</sup>,
-[Kaixuan Wang](https://wang-kx.github.io/)<sup>1</sup>,
-[Xiaozhi Chen](https://xiaozhichen.github.io/)<sup>1</sup>,
-[Chunhua Shen](https://cshen.github.io/)<sup>3</sup>
+<a href='https://jugghm.github.io/Metric3Dv2'><img src='https://img.shields.io/badge/project%20page-@Metric3D-yellow.svg'></a>
+<a href='https://arxiv.org/abs/2307.08695'><img src='https://img.shields.io/badge/arxiv-@Metric3Dv1-green'></a>
+<a href='https:'><img src='https://img.shields.io/badge/arxiv (on hold)-@Metric3Dv2-red'></a>
+<a href='https://huggingface.co/spaces/JUGGHM/Metric3D'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue'></a>
 
-### [Arxiv](https://arxiv.org/abs/2307.10984) | [Video](https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3) | [Hugging Face 🤗](https://huggingface.co/spaces/JUGGHM/Metric3D)
-[@JUGGHM](https://github.com/JUGGHM)<sup>1,5</sup>  will also maintain this project. 
-
-### Metric 3D V2 Comming Soon... Early access in [🤗](https://huggingface.co/spaces/JUGGHM/Metric3D)
-### The Champion of [2nd Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC) in CVPR 2023
-### Zero-shot testing on NYU and KITTI, Comparable with SoTA Supervised methods
+[//]: # (### [Project Page]&#40;https://arxiv.org/abs/2307.08695&#41; | [v2 Paper]&#40;https://arxiv.org/abs/2307.08695&#41; | [v1 Arxiv]&#40;https://arxiv.org/abs/2307.08695&#41; | [Video]&#40;https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3&#41; | [Hugging Face 🤗]&#40;https://huggingface.co/spaces/JUGGHM/Metric3D&#41; )
 
 ## News and TO DO LIST
-- More models are comming soon
-- `[2024/1/17]` An initial version of Hugging Face demo (CPU) released (vit models supported)
+
+[//]: # (- [ ] Release training codes)
+- [ ] Droid slam codes
+- [ ] Release the ViT-giant2 model
+- [ ] Focal length free mode
+- [ ] Floating noise removing mode
+- [ ] Improving HuggingFace Demo and Visualization 
+
+- `[2024/3/18]` HuggingFace GPU version updated!
+- `[2024/3/18]` [Project page](https://jugghm.github.io/Metric3Dv2/) released!
+- `[2024/3/18]` Metric3D V2 models released, supporting metric depth and surface normal now!
 - `[2023/8/10]` Inference codes, pretrained weights, and demo released.
+- `[2023/7]` Metric3D accepted by ICCV 2023!
+- `[2023/4]` The Champion of [2nd Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC) in CVPR 2023
 
 ##  🌼 Abstract
+We present Metric3Dv2, a versatile geometric foundation model for zero-shot metric depth and surface normal estimation.
 
-<div align=center>
-<img src="media/screenshots/pipeline.png">
-</div>
+![page2](media/screenshots/page2.png)
 
-Existing monocular metric depth estimation methods can only handle a single camera model and are unable to perform mixed-data training due to the metric ambiguity. Meanwhile, SOTA monocular methods trained on large mixed datasets achieve zero-shot generalization by learning affine-invariant depths, which cannot recover real-world metrics. In this work, we show that the key to a zero-shot single-view metric depth model lies in the combination of large-scale data training and resolving the metric ambiguity from various camera models. We propose a canonical camera space transformation module, which explicitly addresses the ambiguity problems and can be effortlessly plugged into existing monocular models. Equipped with our module, monocular models can be stably trained over **8 Million images** with **several Kilo camera models**, resulting in **zero-shot** generalization to **in-the-wild** images with unseen camera set.
 
-## 🎩 Fully zero-shot state-of-the-art mono-depth
 
-### Highlights: The Champion 🏆 of [2nd Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC) in CVPR 2023 
+##  📝 Benchmarks 
 
-<div align=center>
-<img src="media/screenshots/challenge.PNG">
-</div>
+### Metric Depth
 
-### Routing benchmarks 
+[//]: # (#### Zero-shot Testing)
 
-WITHOUT re-training the models on target datasets, we obtain comparable performance against SoTA supervised methods Adabins and NewCRFs.
+[//]: # (Our models work well on both indoor and outdoor scenarios, compared with other zero-shot metric depth estimation methods.)
 
-|         | Backbone   | KITTI $\delta 1$ ↑ | KITTI $\delta 2$  ↑ | KITTI $\delta 3$ ↑ | KITTI AbsRel  ↓| KITTI RMSE  ↓| KITTI log10  ↓| NYU $\delta 1$ ↑ | NYU $\delta 2$ ↑ | NYU $\delta 3$ ↑ | NYU AbsRel  ↓| NYU RMSE  ↓| NYU RMSE-log  ↓|
-|---------|------------|---|---|---|---|---|---|---|---|---|---|---|---|
-| Adabins | Efficient-B5 | 0.964 | 0.995 | 0.999 | 0.058  |  2.360 | 0.088  | 0.903  | 0.984  | 0.997  | 0.103  | 0.0444  | 0.364 |
-| NewCRFs | SwinT-L | 0.974 | 0.997 | 0.999 | 0.052  |  2.129 | 0.079  | 0.922  | 0.983  | 0.994  | 0.095  | 0.041  | 0.334 |
-| Ours (CSTM_label) | ConvNeXt-L |      0.964      | 0.993   | 0.998  | 0.058 | 2.770  | 0.092  | 0.944  |  0.986 | 0.995   | 0.083  |  0.035 |  0.310 |
+[//]: # ()
+[//]: # (|                 | Backbone   | KITTI $\delta 1$ ↑ | KITTI $\delta 2$  ↑ | KITTI $\delta 3$ ↑ | KITTI AbsRel  ↓ | KITTI RMSE  ↓ | KITTI RMS_log  ↓ | NYU $\delta 1$ ↑ | NYU $\delta 2$ ↑ | NYU $\delta 3$ ↑ | NYU AbsRel  ↓ | NYU RMSE  ↓ | NYU log10  ↓ |)
 
-## 🌈 DEMOs
-### In-the-wild 3D reconstruction
+[//]: # (|-----------------|------------|--------------------|---------------------|--------------------|-----------------|---------------|------------------|------------------|------------------|------------------|---------------|-------------|--------------|)
 
-|           | Image | Reconstruction | Pointcloud File |
-|:---------:|:------------------:|:------------------:|:--------:|
-|    room   |    <img src="data/wild_demo/jonathan-borba-CnthDZXCdoY-unsplash.jpg" width="300" height="335">     |     <img src="media/gifs/room.gif" width="300" height="335">            |  [Download](https://drive.google.com/file/d/1P1izSegH2c4LUrXGiUksw037PVb0hjZr/view?usp=drive_link)        |
-| Colosseum |    <img src="data/wild_demo/david-kohler-VFRTXGw1VjU-unsplash.jpg" width="300" height="169">     |     <img src="media/gifs/colo.gif" width="300" height="169">         |     [Download](https://drive.google.com/file/d/1jJCXe5IpxBhHDr0TZtNZhjxKTRUz56Hg/view?usp=drive_link)     |
-|   chess   |    <img src="data/wild_demo/randy-fath-G1yhU1Ej-9A-unsplash.jpg" width="300" height="169" align=center>     |     <img src="media/gifs/chess.gif" width="300" height="169">            |      [Download](https://drive.google.com/file/d/1oV_Foq25_p-tTDRTcyO2AzXEdFJQz-Wm/view?usp=drive_link)    |
+[//]: # (| ZeroDepth       | ResNet-18 | 0.910              | 0.980               | 0.996              | 0.057           | 4.044         | 0.083            | 0.901            | 0.961            | -                | 0.100         | 0.380       | -            |)
 
-All three images are downloaded from [unplash](https://unsplash.com/) and put in the data/wild_demo directory.
+[//]: # (| PolyMax         | ConvNeXt-L    | -                  | -                   | -                  | -               | -             | -                | 0.969            | 0.996            | 0.999            | 0.067         | 0.250       | 0.033        |)
 
-### 3D metric reconstruction, Metric3D × DroidSLAM
-Metric3D can also provide scale information for DroidSLAM, help to solve the scale drift problem for better trajectories. (Left: Droid-SLAM (mono). Right: Droid-SLAM with Metric-3D)
+[//]: # (| Ours | ViT-L     | 0.985              | 0.995               | 0.999              | 0.052           | 2.511         | 0.074            | 0.975            | 0.994            | 0.998            | 0.063         | 0.251       | 0.028        |)
 
-#### Bird Eyes' View (Left: Droid-SLAM (mono). Right: Droid-SLAM with Metric-3D)
+[//]: # (| Ours | ViT-g2    | 0.989              | 0.996               | 0.999              | 0.051           | 2.403         | 0.080            | 0.980            | 0.997            | 0.999            | 0.067         | 0.260       | 0.030        |)
 
-<div align=center>
-<img src="media/gifs/0028.gif"> 
-</div>
+[//]: # ()
+[//]: # ([//]: # &#40;| Adabins | Efficient-B5 | 0.964 | 0.995 | 0.999 | 0.058  |  2.360 | 0.088            | 0.903  | 0.984  | 0.997  | 0.103  | 0.0444  | 0.364 |&#41;)
+[//]: # ([//]: # &#40;| NewCRFs | SwinT-L | 0.974 | 0.997 | 0.999 | 0.052  |  2.129 | 0.079            | 0.922  | 0.983  | 0.994  | 0.095  | 0.041  | 0.334 |&#41;)
+[//]: # ([//]: # &#40;| Ours &#40;CSTM_label&#41; | ConvNeXt-L |      0.964      | 0.993   | 0.998  | 0.058 | 2.770  | 0.092            | 0.944  |  0.986 | 0.995   | 0.083  |  0.035 |  0.310 |&#41;)
 
-#### Front View
+[//]: # (#### Finetuned)
+Our models rank 1st on the routing KITTI and NYU benchmarks.
 
-<div align=center>
-<img src="media/gifs/0028_fv.gif"> 
-</div>
+|               | Backbone    | KITTI δ1 ↑ | KITTI δ2  ↑  | KITTI AbsRel  ↓ | KITTI RMSE  ↓ | KITTI RMS_log  ↓ | NYU δ1 ↑ | NYU δ2 ↑  | NYU AbsRel  ↓ | NYU RMSE  ↓ | NYU log10  ↓ |
+|---------------|-------------|------------|-------------|-----------------|---------------|------------------|----------|----------|---------------|-------------|--------------|
+| ZoeDepth      | ViT-Large   | 0.971      | 0.995                  | 0.053           | 2.281         | 0.082            | 0.953    | 0.995        | 0.077         | 0.277       | 0.033        |
+| ZeroDepth     | ResNet-18   | 0.968      | 0.996                   | 0.057           | 2.087         | 0.083            | 0.954    | 0.995           | 0.074         | 0.269       | 0.103        |
+| IEBins        | SwinT-Large | 0.978      | 0.998                  | 0.050           | 2.011         | 0.075            | 0.936    | 0.992           | 0.087         | 0.314       | 0.031        |
+| DepthAnything | ViT-Large   | 0.982      | 0.998                  | 0.046           | 1.985         | 0.069            | 0.984    | 0.998           | 0.056         | 0.206       | 0.024        |
+| Ours          | ViT-Large   | 0.985      | 0.998       | 0.999                        | 1.985         | 0.064            | 0.989    | 0.998           | 0.047         | 0.183       | 0.020        |
+| Ours          | ViT-giant2  | 0.989      | 0.998       | 1.000                        | 1.766         | 0.060            | 0.987    | 0.997           | 0.045         | 0.187       | 0.015        |
 
-#### KITTI odemetry evaluation (Translational RMS drift (t_rel, ↓) / Rotational RMS drift (r_rel, ↓))
-|            | Modality |   seq 00   |   seq 02   |   seq 05  |   seq 06   |   seq 08   |   seq 09  |   seq 10  |
-|:----------:|:--------:|:----------:|:----------:|:---------:|:----------:|:----------:|:---------:|:---------:|
-|  ORB-SLAM2 |   Mono   | 11.43/0.58 | 10.34/0.26 | 9.04/0.26 | 14.56/0.26 | 11.46/0.28 |  9.3/0.26 | 2.57/0.32 |
-| Droid-SLAM |   Mono   |  33.9/0.29 | 34.88/0.27 | 23.4/0.27 |  17.2/0.26 |  39.6/0.31 | 21.7/0.23 |   7/0.25  |
-| Droid+Ours |   Mono   |  1.44/0.37 |  2.64/0.29 | 1.44/0.25 |   0.6/0.2  |   2.2/0.3  | 1.63/0.22 | 2.73/0.23 |
-|  ORB-SLAM2 |  Stereo  |  0.88/0.31 |  0.77/0.28 | 0.62/0.26 |  0.89/0.27 |  1.03/0.31 | 0.86/0.25 | 0.62/0.29 |
+### Affine-invariant Depth
+Even compared to recent affine-invariant depth methods (Marigold and Depth Anything), our metric-depth (and normal) models still show superior performance. 
 
-Metric3D makes the mono-SLAM scale-aware, like stereo systems.
+|                       | #Data for Pretrain and Train                 | KITTI Absrel ↓ | KITTI δ1 ↑ | NYUv2 AbsRel  ↓ | NYUv2 δ1 ↑ | DIODE-Full AbsRel ↓ | DIODE-Full δ1 ↑ | Eth3d AbsRel  ↓ | Eth3d δ1 ↑ |
+|-----------------------|----------------------------------------------|----------------|------------|-----------------|------------|---------------------|-----------------|----------------------|------------|
+| OmniData (v2, ViT-L)       | 1.3M + 12.2M                                 | 0.069          | 0.948      | 0.074           | 0.945      | 0.149               | 0.835           | 0.166                | 0.778      | 
+| MariGold  (LDMv2)     | 5B + 74K                                     | 0.099          | 0.916      | 0.055           | 0.961      | 0.308               | 0.773           | 0.127                | 0.960      | 
+| DepthAnything (ViT-L) | 142M + 63M                                   | 0.076          | 0.947      | 0.043           | 0.981      | 0.277               | 0.759           | 0.065                | 0.882      | 
+| Ours (ViT-L)          | 142M + 16M                                   | 0.042          | 0.979      | 0.042           | 0.980      | 0.141               | 0.882           | 0.042                | 0.987      | 
+| Ours (ViT-g)          | 142M + 16M                                   | 0.043          | 0.982      | 0.043           | 0.981      | 0.136               | 0.895           | 0.042                | 0.983      | 
 
-#### KITTI sequence videos - Youtube
-[2011_09_30_drive_0028](https://youtu.be/gcTB4MgVCLQ) /
-[2011_09_30_drive_0033](https://youtu.be/He581fmoPP4) /
-[2011_09_30_drive_0034](https://youtu.be/I3PkukQ3_F8)
 
-videos - Bilibili (TODO)
+### Surface Normal
+Our models also show powerful performance on normal benchmarks.
 
-#### Estimated pose
-[2011_09_30_drive_0033](https://drive.google.com/file/d/1SMXWzLYrEdmBe6uYMR9ShtDXeFDewChv/view?usp=drive_link) / 
-[2011_09_30_drive_0034](https://drive.google.com/file/d/1ONU4GxpvTlgW0TjReF1R2i-WFxbbjQPG/view?usp=drive_link) /
-[2011_10_03_drive_0042](https://drive.google.com/file/d/19fweg6p1Q6TjJD2KlD7EMA_aV4FIeQUD/view?usp=drive_link)
+|              | NYU 11.25° ↑ | NYU Mean ↓ | NYU RMS ↓ | ScanNet 11.25° ↑ | ScanNet Mean ↓ | ScanNet RMS ↓ | iBims 11.25° ↑ | iBims Mean ↓ | iBims RMS ↓ | 
+|--------------|----------|----------|-----------|-----------------|----------------|--------------|---------------|--------------|-------------|
+| EESNU        | 0.597    | 16.0     | 24.7      | 0.711           | 11.8           | 20.3         | 0.585         | 20.0         | -           | 
+| IronDepth    | -        | -        | -         | -               | -              | -            | 0.431         | 25.3         | 37.4        | 
+| PolyMax      | 0.656    | 13.1     | 20.4      | -               | -              | -            | -             | -            | -           |
+| Ours (ViT-L) | 0.688    | 12.0     | 19.2      | 0.760           | 9.9            | 16.4         | 0.694         | 19.4         | 34.9        | 
+| Ours (ViT-g)   | 0.662    | 13.2     | 20.2      | 0.778           | 9.2            | 15.3         | 0.697         | 19.6         | 35.2        |
 
-#### Pointcloud files
-[2011_09_30_drive_0033](https://drive.google.com/file/d/1K0o8DpUmLf-f_rue0OX1VaHlldpHBAfw/view?usp=drive_link) /
-[2011_09_30_drive_0034](https://drive.google.com/file/d/1bvZ6JwMRyvi07H7Z2VD_0NX1Im8qraZo/view?usp=drive_link) /
-[2011_10_03_drive_0042](https://drive.google.com/file/d/1Vw59F8nN5ApWdLeGKXvYgyS9SNKHKy4x/view?usp=drive_link)
+[//]: # (## 🌈 3D Reconstruction DEMOs)
+
+[//]: # (### Monocular reconstruction for a Sequence)
+
+[//]: # ()
+[//]: # (### In-the-wild 3D reconstruction)
+
+[//]: # ()
+[//]: # (|           | Image | Reconstruction | Pointcloud File |)
+
+[//]: # (|:---------:|:------------------:|:------------------:|:--------:|)
+
+[//]: # (|    room   |    <img src="data/wild_demo/jonathan-borba-CnthDZXCdoY-unsplash.jpg" width="300" height="335">     |     <img src="media/gifs/room.gif" width="300" height="335">            |  [Download]&#40;https://drive.google.com/file/d/1P1izSegH2c4LUrXGiUksw037PVb0hjZr/view?usp=drive_link&#41;        |)
+
+[//]: # (| Colosseum |    <img src="data/wild_demo/david-kohler-VFRTXGw1VjU-unsplash.jpg" width="300" height="169">     |     <img src="media/gifs/colo.gif" width="300" height="169">         |     [Download]&#40;https://drive.google.com/file/d/1jJCXe5IpxBhHDr0TZtNZhjxKTRUz56Hg/view?usp=drive_link&#41;     |)
+
+[//]: # (|   chess   |    <img src="data/wild_demo/randy-fath-G1yhU1Ej-9A-unsplash.jpg" width="300" height="169" align=center>     |     <img src="media/gifs/chess.gif" width="300" height="169">            |      [Download]&#40;https://drive.google.com/file/d/1oV_Foq25_p-tTDRTcyO2AzXEdFJQz-Wm/view?usp=drive_link&#41;    |)
+
+[//]: # ()
+[//]: # (All three images are downloaded from [unplash]&#40;https://unsplash.com/&#41; and put in the data/wild_demo directory.)
+
+[//]: # ()
+[//]: # (### 3D metric reconstruction, Metric3D × DroidSLAM)
+
+[//]: # (Metric3D can also provide scale information for DroidSLAM, help to solve the scale drift problem for better trajectories. )
+
+[//]: # ()
+[//]: # (#### Bird Eyes' View &#40;Left: Droid-SLAM &#40;mono&#41;. Right: Droid-SLAM with Metric-3D&#41;)
+
+[//]: # ()
+[//]: # (<div align=center>)
+
+[//]: # (<img src="media/gifs/0028.gif"> )
+
+[//]: # (</div>)
+
+[//]: # ()
+[//]: # (### Front View)
+
+[//]: # ()
+[//]: # (<div align=center>)
+
+[//]: # (<img src="media/gifs/0028_fv.gif"> )
+
+[//]: # (</div>)
+
+[//]: # ()
+[//]: # (#### KITTI odemetry evaluation &#40;Translational RMS drift &#40;t_rel, ↓&#41; / Rotational RMS drift &#40;r_rel, ↓&#41;&#41;)
+
+[//]: # (|            | Modality |   seq 00   |   seq 02   |   seq 05  |   seq 06   |   seq 08   |   seq 09  |   seq 10  |)
+
+[//]: # (|:----------:|:--------:|:----------:|:----------:|:---------:|:----------:|:----------:|:---------:|:---------:|)
+
+[//]: # (|  ORB-SLAM2 |   Mono   | 11.43/0.58 | 10.34/0.26 | 9.04/0.26 | 14.56/0.26 | 11.46/0.28 |  9.3/0.26 | 2.57/0.32 |)
+
+[//]: # (| Droid-SLAM |   Mono   |  33.9/0.29 | 34.88/0.27 | 23.4/0.27 |  17.2/0.26 |  39.6/0.31 | 21.7/0.23 |   7/0.25  |)
+
+[//]: # (| Droid+Ours |   Mono   |  1.44/0.37 |  2.64/0.29 | 1.44/0.25 |   0.6/0.2  |   2.2/0.3  | 1.63/0.22 | 2.73/0.23 |)
+
+[//]: # (|  ORB-SLAM2 |  Stereo  |  0.88/0.31 |  0.77/0.28 | 0.62/0.26 |  0.89/0.27 |  1.03/0.31 | 0.86/0.25 | 0.62/0.29 |)
+
+[//]: # ()
+[//]: # (Metric3D makes the mono-SLAM scale-aware, like stereo systems.)
+
+[//]: # ()
+[//]: # (#### KITTI sequence videos - Youtube)
+
+[//]: # ([2011_09_30_drive_0028]&#40;https://youtu.be/gcTB4MgVCLQ&#41; /)
+
+[//]: # ([2011_09_30_drive_0033]&#40;https://youtu.be/He581fmoPP4&#41; /)
+
+[//]: # ([2011_09_30_drive_0034]&#40;https://youtu.be/I3PkukQ3_F8&#41;)
+
+[//]: # ()
+[//]: # (#### Estimated pose)
+
+[//]: # ([2011_09_30_drive_0033]&#40;https://drive.google.com/file/d/1SMXWzLYrEdmBe6uYMR9ShtDXeFDewChv/view?usp=drive_link&#41; / )
+
+[//]: # ([2011_09_30_drive_0034]&#40;https://drive.google.com/file/d/1ONU4GxpvTlgW0TjReF1R2i-WFxbbjQPG/view?usp=drive_link&#41; /)
+
+[//]: # ([2011_10_03_drive_0042]&#40;https://drive.google.com/file/d/19fweg6p1Q6TjJD2KlD7EMA_aV4FIeQUD/view?usp=drive_link&#41;)
+
+[//]: # ()
+[//]: # (#### Pointcloud files)
+
+[//]: # ([2011_09_30_drive_0033]&#40;https://drive.google.com/file/d/1K0o8DpUmLf-f_rue0OX1VaHlldpHBAfw/view?usp=drive_link&#41; /)
+
+[//]: # ([2011_09_30_drive_0034]&#40;https://drive.google.com/file/d/1bvZ6JwMRyvi07H7Z2VD_0NX1Im8qraZo/view?usp=drive_link&#41; /)
+
+[//]: # ([2011_10_03_drive_0042]&#40;https://drive.google.com/file/d/1Vw59F8nN5ApWdLeGKXvYgyS9SNKHKy4x/view?usp=drive_link&#41;)
 
 ## 🔨 Installation
 ### One-line Installation
+For the ViT models, use the following environment：
 ```bash
-pip install -r requirements.txt
-```
-Or you could also try:
-
-#### 30 series GPUs, pytorch1.10
-```bash
-conda create -n metric3d python=3.7
-conda activate metric3d
-pip install torch==1.10.0+cu111 torchvision==0.11.0+cu111 torchaudio==0.10.0 -f https://download.pytorch.org/whl/torch_stable.html
-pip install -r requirements.txt
-pip install -U openmim
-mim install mmengine
-mim install "mmcv-full==1.3.17"
-pip install "mmsegmentation==0.19.0"
+pip install -r requirements_v2.txt
 ```
 
-#### 40 series GPUs, pytorch2.0
+For ConvNeXt-L, it is 
 ```bash
-conda create -n metric3d python=3.8
-conda activate metric3d
-pip3 install torch torchvision torchaudio
 pip install -r requirements.txt
-pip install -U openmim
-mim install mmengine
-mim install "mmcv-full==1.7.1"
-pip install "mmsegmentation==0.30.0"
-pip install numpy==1.20.0
-pip install scikit-image==0.18.0
 ```
 
 ### dataset annotation components
@@ -163,71 +224,62 @@ In ```mono/configs``` we provide different config setups.
 Intrinsics of the canonical camera is set bellow: 
 ```
     canonical_space = dict(
+        img_size=(512, 960),
         focal_length=1000.0,
     ),
 ```
-where cx and cy is set to be half of the image size. You do not need to adjust the canonical focal length, otherwise the metric is not accurate. 
+where cx and cy is set to be half of the image size.
 
 Inference settings are defined as
 ```
+    depth_range=(0, 1),
+    depth_normalize=(0.3, 150),
     crop_size = (512, 1088),
 ```
-where the images will be resized and padded as the ```crop_size``` and then fed into the model.
+where the images will be first resized as the ```crop_size``` and then fed into the model.
 
 ## ✈️ Inference
 ### Download Checkpoint
-|      | Encoder | Decoder | Link |
-|:----:|:-------:|:-------:|:-------:|
-| v1.0 |  ConvNeXt-L |   Hourglass-Decoder |  [Download](https://drive.google.com/file/d/1KVINiBkVpJylx_6z1lAC7CQ4kmn-RJRN/view?usp=drive_link)|
-
-More models are on the way...
+|      |       Encoder       |      Decoder      |                                               Link                                                |
+|:----:|:-------------------:|:-----------------:|:-------------------------------------------------------------------------------------------------:|
+| v1-T |    ConvNeXt-Tiny    | Hourglass-Decoder |                                            Coming soon                                            |
+| v1-L |   ConvNeXt-Large    | Hourglass-Decoder | [Download](https://drive.google.com/file/d/1KVINiBkVpJylx_6z1lAC7CQ4kmn-RJRN/view?usp=drive_link) |
+| v2-S | DINO2reg-ViT-Small  |    RAFT-4iter     | [Download](https://drive.google.com/file/d/1YfmvXwpWmhLg3jSxnhT7LvY0yawlXcr_/view?usp=drive_link) |
+| v2-L | DINO2reg-ViT-Large  |    RAFT-8iter     | [Download](https://drive.google.com/file/d/1eT2gG-kwsVzNy5nJrbm4KC-9DbNKyLnr/view?usp=drive_link) |
+| v2-g | DINO2reg-ViT-giant2 |    RAFT-8iter     | Coming soon |
 
 ### Dataset Mode
 1. put the trained ckpt file ```model.pth``` in ```weight/```.
-2. generate data annotation by following the code ```data/gene_annos_kitti_demo.py```, which includes 'rgb', (required) 'intrinsic', (required) 'depth', (optional) 'depth_scale'. Note the 'depth_scale' is the scale factor for GT labels. e.g. to keep the precision, the kitti GT depths are scaled with 256. 
+2. generate data annotation by following the code ```data/gene_annos_kitti_demo.py```, which includes 'rgb', (optional) 'intrinsic', (optional) 'depth', (optional) 'depth_scale'.
 3. change the 'test_data_path' in ```test_*.sh``` to the ```*.json``` path. 
 4. run ```source test_kitti.sh``` or ```source test_nyu.sh```.
 
 ### In-the-Wild Mode
 1. put the trained ckpt file ```model.pth``` in ```weight/```.
 2. change the 'test_data_path' in ```test.sh``` to the image folder path. 
-3. run ```source test.sh```.
-Note: if you do not know the intrinsics, we will randomly set the intrinsic parameters. The problem is the predicted depth has no metric. However, if you know the paired focal length, please modify the following code in ```mono/utils/custom_data.py```. Set the 'intrinsic' with the format [fx, fy, cx, cy].
-```
-def load_data(path: str):
-    rgbs = glob.glob(path + '/*.jpg') + glob.glob(path + '/*.png')
-    data = [{'rgb':i, 'depth':None, 'intrinsic': None, 'filename':os.path.basename(i), 'folder': i.split('/')[-3]} for i in rgbs]
-    return data
-```
+3. run ```source test_vit.sh``` for transformers and ```source test.sh``` for convnets.
+As no intrinsics are provided, we provided by default 9 settings of focal length.
 
 ## ❓ Q & A
-### Q1.1: Why depth maps look good but pointclouds are distorted?
+### Q1: Why depth maps look good but pointclouds are distorted?
 Because the focal length is not properly set! Please find a proper focal length by modifying codes [here](mono/utils/do_test.py#309) yourself.  
-
-### Q1.2: Why depth maps look good but scales are not precise?
-If the intrinsics are correct, please try different **resolutions** for  ``` crop_size = (512, 1088) ``` in the config file. From our experience, you could try (544, 928), (768, 1088), (512, 992), (480, 1216), (1216, 1952), or some resolutions close to them as you like. Generally, larger resolutions are better for driving scenarios and smaller ones for indoors.  
 
 ### Q2: Why the pointclouds are too slow to be generated?
 Because the images are too large! Use smaller ones instead. 
 
 ### Q3: Why predicted depth maps are not satisfactory?
-First be sure all black padding regions at image boundaries are cropped out. Besides, metric 3D is not almighty. Some objects (chandeliers, drones...) / camera views (aerial view, bev...) do not occur frequently in the training datasets. We will going deeper into this and release more powerful solutions.
-
-## 🍭 Acknowledgement
-This work is empowered by DJI Automotive<sup>1</sup>
-
-<div align=center>
-<img src="media/icons/dji.jpg" width="150" height="200" align=center>
-</div>
-
-and collaborators from
-Tencent<sup>2</sup>, ZJU<sup>3</sup>, Intel Labs<sup>4</sup>, and HKUST<sup>5</sup>
-
-<img src="media/icons/tencent.png" width="200" height="100" align=center> <img src="media/icons/zju.png" width="100" height="100" align=center> <img src="media/icons/intel.jpg" width="150" height="100" align=center> <img src="media/icons/hkust.png" width="300" height="75" align=center>
-
-We appreciate efforts from the contributors of [mmcv](https://github.com/open-mmlab/mmcv), all concerning datasets, and [NVDS](https://github.com/RaymondWang987/NVDS).
+First be sure all black padding regions at image boundaries are cropped out. Then please try again.
+Besides, metric 3D is not almighty. Some objects (chandeliers, drones...) / camera views (aerial view, bev...) do not occur frequently in the training datasets. We will going deeper into this and release more powerful solutions.
 
 ## 📧 Citation
+```
+@article{hu2024metric3dv2,
+  title={A Versatile Monocular Geometric Foundation Model for Zero-shot Metric Depth and Surface Normal Estimation},
+  author={Hu, Mu and Yin, Wei, and Zhang, Chi and Cai, Zhipeng and Long, Xiaoxiao and Chen, Hao, and Wang, Kaixuan and Yu, Gang and Shen, Chunhua and Shen, Shaojie},
+  booktitle={arXiv},
+  year={2024}
+}
+```
 ```
 @article{yin2023metric,
   title={Metric3D: Towards Zero-shot Metric 3D Prediction from A Single Image},
@@ -239,4 +291,4 @@ We appreciate efforts from the contributors of [mmcv](https://github.com/open-mm
 
 ## License and Contact
 
-The *Metric 3D* code is under a GPLv3 License for non-commercial usage. For further questions, contact Dr. Wei Yin  [yvanwy@outlook.com] and Mr. Mu Hu [mhuam@connect.ust.hk].
+The *Metric 3D* code is under a 2-clause BSD License for non-commercial usage. For further questions, contact Dr. yvan.yin  [yvanwy@outlook.com] and Mr. mu.hu [mhuam@connect.ust.hk].

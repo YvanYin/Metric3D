@@ -38,28 +38,30 @@ class MetricAverageMeter(AverageMeter):
 
         self.metrics = metrics
 
+        self.consistency = AverageMeter()
         self.log10 = AverageMeter()
         self.rmse_log = AverageMeter()
         self.sq_rel = AverageMeter()
-    
-    def reset(self):
-        self.abs_rel.reset()
-        self.rmse.reset()
-        self.silog.reset()
-        self.delta1.reset()
-        self.delta2.reset()
-        self.delta3.reset()
-        self.log10.reset()
-        self.rmse_log.reset()
-        self.sq_rel.reset()
+
+        # normal
+        self.normal_mean = AverageMeter()
+        self.normal_rmse = AverageMeter()
+        self.normal_a1 = AverageMeter()
+        self.normal_a2 = AverageMeter()
+        
+        self.normal_median = AverageMeter()
+        self.normal_a3 = AverageMeter()
+        self.normal_a4 = AverageMeter()
+        self.normal_a5 = AverageMeter()
+
 
     def update_metrics_cpu(self,
         pred: torch.Tensor,
         target: torch.Tensor,
         mask: torch.Tensor,):
-        '''
+        """
         Update metrics on cpu
-        '''
+        """
 
         assert pred.shape == target.shape
 
@@ -71,15 +73,15 @@ class MetricAverageMeter(AverageMeter):
             pred = pred[None, None, :, :]
             target = target[None, None, :, :]
             mask = mask[None, None, :, :]
-        
+
 
         # Absolute relative error
         abs_rel_sum, valid_pics = get_absrel_err(pred, target, mask)
         abs_rel_sum = abs_rel_sum.numpy()
         valid_pics = valid_pics.numpy()
         self.abs_rel.update(abs_rel_sum, valid_pics)
-
-        # squraed relative error
+        
+        # squared relative error
         sqrel_sum, _ = get_sqrel_err(pred, target, mask)
         sqrel_sum = sqrel_sum.numpy()
         self.sq_rel.update(sqrel_sum, valid_pics)
@@ -88,32 +90,32 @@ class MetricAverageMeter(AverageMeter):
         rmse_sum, _ = get_rmse_err(pred, target, mask)
         rmse_sum = rmse_sum.numpy()
         self.rmse.update(rmse_sum, valid_pics)
-
+        
         # log root mean squared error
         log_rmse_sum, _ = get_rmse_log_err(pred, target, mask)
         log_rmse_sum = log_rmse_sum.numpy()
-        self.rmse_log.update(log_rmse_sum, valid_pics)
-
+        self.rmse.update(log_rmse_sum, valid_pics)
+        
         # log10 error
         log10_sum, _ = get_log10_err(pred, target, mask)
         log10_sum = log10_sum.numpy()
-        self.log10.update(log10_sum, valid_pics)
+        self.rmse.update(log10_sum, valid_pics)
 
         # scale-invariant root mean squared error in log space
         silog_sum, _ = get_silog_err(pred, target, mask)
         silog_sum = silog_sum.numpy()
         self.silog.update(silog_sum, valid_pics)
 
-        # ratio error, delta1, ...
-        delta1_sum, delta2_sum, delta3_sum, _ = get_ratio_err(pred, target, mask)
+        # ratio error, delta1, ....
+        delta1_sum, delta2_sum, delta3_sum, _ = get_ratio_error(pred, target, mask)
         delta1_sum = delta1_sum.numpy()
         delta2_sum = delta2_sum.numpy()
         delta3_sum = delta3_sum.numpy()
 
         self.delta1.update(delta1_sum, valid_pics)
-        self.delta2.update(delta2_sum, valid_pics)
-        self.delta3.update(delta3_sum, valid_pics)
-
+        self.delta2.update(delta1_sum, valid_pics)
+        self.delta3.update(delta1_sum, valid_pics)
+        
 
     def update_metrics_gpu(
         self,
@@ -121,14 +123,13 @@ class MetricAverageMeter(AverageMeter):
         target: torch.Tensor,
         mask: torch.Tensor,
         is_distributed: bool,
-        pred_next: torch.Tensor = None,
-        pose_f1_to_f2: torch.Tensor = None,
-        intrinsic: torch.Tensor = None,
-        ):
-        '''
+        pred_next: torch.tensor = None,
+        pose_f1_to_f2: torch.tensor = None,
+        intrinsic: torch.tensor = None):
+        """ 
         Update metric on GPU. It supports distributed processing. If multiple machines are employed, please
         set 'is_distributed' as True.
-        '''
+        """
         assert pred.shape == target.shape
 
         if len(pred.shape) == 3:
@@ -139,7 +140,7 @@ class MetricAverageMeter(AverageMeter):
             pred = pred[None, None, :, :]
             target = target[None, None, :, :]
             mask = mask[None, None, :, :]
-        
+
 
         # Absolute relative error
         abs_rel_sum, valid_pics = get_absrel_err(pred, target, mask)
@@ -149,27 +150,20 @@ class MetricAverageMeter(AverageMeter):
         valid_pics = int(valid_pics)
         self.abs_rel.update(abs_rel_sum, valid_pics)
 
-        # squraed relative error
-        sqrel_sum, _ = get_sqrel_err(pred, target, mask)
-        if is_distributed:
-            dist.all_reduce(sqrel_sum)
-        sqrel_sum = sqrel_sum.cpu().numpy()
-        self.sq_rel.update(sqrel_sum, valid_pics)
-
         # root mean squared error
         rmse_sum, _ = get_rmse_err(pred, target, mask)
         if is_distributed:
             dist.all_reduce(rmse_sum)
         rmse_sum = rmse_sum.cpu().numpy()
         self.rmse.update(rmse_sum, valid_pics)
-
+        
         # log root mean squared error
         log_rmse_sum, _ = get_rmse_log_err(pred, target, mask)
         if is_distributed:
             dist.all_reduce(log_rmse_sum)
         log_rmse_sum = log_rmse_sum.cpu().numpy()
         self.rmse_log.update(log_rmse_sum, valid_pics)
-
+    
         # log10 error
         log10_sum, _ = get_log10_err(pred, target, mask)
         if is_distributed:
@@ -184,7 +178,7 @@ class MetricAverageMeter(AverageMeter):
         silog_sum = silog_sum.cpu().numpy()
         self.silog.update(silog_sum, valid_pics)
 
-        # ratio error, delta1, ...
+        # ratio error, delta1, ....
         delta1_sum, delta2_sum, delta3_sum, _ = get_ratio_err(pred, target, mask)
         if is_distributed:
             dist.all_reduce(delta1_sum), dist.all_reduce(delta2_sum), dist.all_reduce(delta3_sum)
@@ -196,8 +190,89 @@ class MetricAverageMeter(AverageMeter):
         self.delta2.update(delta2_sum, valid_pics)
         self.delta3.update(delta3_sum, valid_pics)
 
+        # video consistency error
+        # consistency_rel_sum, valid_warps = get_video_consistency_err(pred, pred_next, pose_f1_to_f2, intrinsic)
+        # if is_distributed:
+        #     dist.all_reduce(consistency_rel_sum), dist.all_reduce(valid_warps)
+        # consistency_rel_sum = consistency_rel_sum.cpu().numpy()
+        # valid_warps = int(valid_warps)
+        # self.consistency.update(consistency_rel_sum, valid_warps)
 
-    def get_metrics(self):
+    ## for surface normal
+    def update_normal_metrics_gpu(
+        self,
+        pred: torch.Tensor, # (B, 3, H, W)
+        target: torch.Tensor, # (B, 3, H, W)
+        mask: torch.Tensor, # (B, 1, H, W)
+        is_distributed: bool,
+        ):
+        """ 
+        Update metric on GPU. It supports distributed processing. If multiple machines are employed, please
+        set 'is_distributed' as True.
+        """
+        assert pred.shape == target.shape
+
+        valid_pics = torch.sum(mask, dtype=torch.float32) + 1e-6
+
+        if valid_pics < 10:
+            return
+
+        mean_error = rmse_error = a1_error = a2_error = dist_node_cnt = valid_pics
+        normal_error = torch.cosine_similarity(pred, target, dim=1)
+        normal_error = torch.clamp(normal_error, min=-1.0, max=1.0)
+        angle_error = torch.acos(normal_error) * 180.0 / torch.pi
+        angle_error = angle_error[:, None, :, :]
+        angle_error = angle_error[mask]
+        # Calculation error
+        mean_error = angle_error.sum() / valid_pics
+        rmse_error = torch.sqrt( torch.sum(torch.square(angle_error)) / valid_pics )
+        median_error = angle_error.median()
+        a1_error = 100.0 * (torch.sum(angle_error < 5) / valid_pics)
+        a2_error = 100.0 * (torch.sum(angle_error < 7.5) / valid_pics)
+        
+        a3_error = 100.0 * (torch.sum(angle_error < 11.25) / valid_pics)
+        a4_error = 100.0 * (torch.sum(angle_error < 22.5) / valid_pics)
+        a5_error = 100.0 * (torch.sum(angle_error < 30) / valid_pics)
+
+        # if valid_pics > 1e-5:
+        # If the current node gets data with valid normal
+        dist_node_cnt = (valid_pics - 1e-6) / valid_pics
+
+        if is_distributed:
+            dist.all_reduce(dist_node_cnt)
+            dist.all_reduce(mean_error)
+            dist.all_reduce(rmse_error)
+            dist.all_reduce(a1_error)
+            dist.all_reduce(a2_error)
+            
+            dist.all_reduce(a3_error)
+            dist.all_reduce(a4_error)
+            dist.all_reduce(a5_error)
+
+        dist_node_cnt = dist_node_cnt.cpu().numpy()
+        self.normal_mean.update(mean_error.cpu().numpy(), dist_node_cnt)
+        self.normal_rmse.update(rmse_error.cpu().numpy(), dist_node_cnt)
+        self.normal_a1.update(a1_error.cpu().numpy(), dist_node_cnt)
+        self.normal_a2.update(a2_error.cpu().numpy(), dist_node_cnt)
+
+        self.normal_median.update(median_error.cpu().numpy(), dist_node_cnt)
+        self.normal_a3.update(a3_error.cpu().numpy(), dist_node_cnt)
+        self.normal_a4.update(a4_error.cpu().numpy(), dist_node_cnt)
+        self.normal_a5.update(a5_error.cpu().numpy(), dist_node_cnt)
+
+
+    def get_metrics(self,):
+        """
+        """
+        metrics_dict = {}
+        for metric in self.metrics:
+            metrics_dict[metric] = self.__getattribute__(metric).avg
+        return metrics_dict
+
+
+    def get_metrics(self,):
+        """
+        """
         metrics_dict = {}
         for metric in self.metrics:
             metrics_dict[metric] = self.__getattribute__(metric).avg
