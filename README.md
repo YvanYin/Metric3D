@@ -3,7 +3,7 @@
 **Official PyTorch implementation of "Metric3D: Towards Zero-shot Metric 3D Prediction from A Single Image" and "Metric3Dv2: A Versatile Monocular Geometric Foundation Model for Zero-shot Metric Depth and Surface Normal Estimation"**
 
 <a href='https://jugghm.github.io/Metric3Dv2'><img src='https://img.shields.io/badge/project%20page-@Metric3D-yellow.svg'></a>
-<a href='https://arxiv.org/abs/2307.08695'><img src='https://img.shields.io/badge/arxiv-@Metric3Dv1-green'></a>
+<a href='https://arxiv.org/abs/2307.10984'><img src='https://img.shields.io/badge/arxiv-@Metric3Dv1-green'></a>
 <a href='https:'><img src='https://img.shields.io/badge/arxiv (on hold)-@Metric3Dv2-red'></a>
 <a href='https://huggingface.co/spaces/JUGGHM/Metric3D'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue'></a>
 
