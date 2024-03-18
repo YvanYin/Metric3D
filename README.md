@@ -7,7 +7,7 @@
 <a href='https:'><img src='https://img.shields.io/badge/arxiv (on hold)-@Metric3Dv2-red'></a>
 <a href='https://huggingface.co/spaces/JUGGHM/Metric3D'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue'></a>
 
-[//]: # (### [Project Page]&#40;https://arxiv.org/abs/2307.08695&#41; | [v2 Paper]&#40;https://arxiv.org/abs/2307.08695&#41; | [v1 Arxiv]&#40;https://arxiv.org/abs/2307.08695&#41; | [Video]&#40;https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3&#41; | [Hugging Face 🤗]&#40;https://huggingface.co/spaces/JUGGHM/Metric3D&#41; )
+[//]: # (### [Project Page]&#40;https://arxiv.org/abs/2307.08695&#41; | [v2 Paper]&#40;https://arxiv.org/abs/2307.10984&#41; | [v1 Arxiv]&#40;https://arxiv.org/abs/2307.10984&#41; | [Video]&#40;https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3&#41; | [Hugging Face 🤗]&#40;https://huggingface.co/spaces/JUGGHM/Metric3D&#41; )
 
 ## News and TO DO LIST
 
