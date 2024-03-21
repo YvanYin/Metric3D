@@ -98,13 +98,16 @@ Our models also show powerful performance on normal benchmarks.
 | Ours (ViT-L) | 0.688    | 12.0     | 19.2      | 0.760           | 9.9            | 16.4         | 0.694         | 19.4         | 34.9        | 
 | Ours (ViT-g)   | 0.662    | 13.2     | 20.2      | 0.778           | 9.2            | 15.3         | 0.697         | 19.6         | 35.2        |
 
+
+
 ## 🌈 DEMOs
+
 ### Zero-shot monocular metric depth & surface normal
+<img src="media/gifs/demo_1.gif" width="600" height="337">  
+<img src="media/gifs/demo_12.gif" width="600" height="337">
 
-<video id="video" controls="" preload="none" poster="">
-      <source id="mp4" src="media/demo_1.mp4" type="video/mp4">
-</video>
-
+### Zero-shot metric 3D recovery
+<img src="media/gifs/demo_2.gif" width="600" height="337">  
 
 [//]: # (https://github.com/YvanYin/Metric3D/assets/35299633/f95815ef-2506-4193-a6d9-1163ea821268)
 
