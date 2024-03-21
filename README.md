@@ -16,7 +16,8 @@
 - [ ] Release the ViT-giant2 model
 - [ ] Focal length free mode
 - [ ] Floating noise removing mode
-- [ ] Improving HuggingFace Demo and Visualization 
+- [ ] Improving HuggingFace Demo and Visualization
+- [ ] Release training data.
 
 - `[2024/3/18]` HuggingFace GPU version updated!
 - `[2024/3/18]` [Project page](https://jugghm.github.io/Metric3Dv2/) released!
