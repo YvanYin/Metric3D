@@ -98,13 +98,19 @@ Our models also show powerful performance on normal benchmarks.
 | Ours (ViT-L) | 0.688    | 12.0     | 19.2      | 0.760           | 9.9            | 16.4         | 0.694         | 19.4         | 34.9        | 
 | Ours (ViT-g)   | 0.662    | 13.2     | 20.2      | 0.778           | 9.2            | 15.3         | 0.697         | 19.6         | 35.2        |
 
-## 🌈 DEMOs
-### Zero-shot monocular metric depth & surface normal
-https://github.com/YvanYin/Metric3D/assets/35299633/f95815ef-2506-4193-a6d9-1163ea821268
-https://github.com/YvanYin/Metric3D/assets/35299633/ed00706c-41cc-49ea-accb-ad0532633cc2
-### Zero-shot metric 3D recovery
-https://github.com/YvanYin/Metric3D/assets/35299633/26cd7ae1-dd5a-4446-b275-54c5ca7ef945
-https://github.com/YvanYin/Metric3D/assets/35299633/21e5484b-c304-4fe3-b1d3-8eebc4e26e42
+[//]: # (## 🌈 DEMOs)
+
+[//]: # (### Zero-shot monocular metric depth & surface normal)
+
+[//]: # (https://github.com/YvanYin/Metric3D/assets/35299633/f95815ef-2506-4193-a6d9-1163ea821268)
+
+[//]: # (https://github.com/YvanYin/Metric3D/assets/35299633/ed00706c-41cc-49ea-accb-ad0532633cc2)
+
+[//]: # (### Zero-shot metric 3D recovery)
+
+[//]: # (https://github.com/YvanYin/Metric3D/assets/35299633/26cd7ae1-dd5a-4446-b275-54c5ca7ef945)
+
+[//]: # (https://github.com/YvanYin/Metric3D/assets/35299633/21e5484b-c304-4fe3-b1d3-8eebc4e26e42)
 [//]: # (### Monocular reconstruction for a Sequence)
 
 [//]: # ()
