@@ -93,7 +93,11 @@ Our models also show powerful performance on normal benchmarks.
 | Ours (ViT-L) | 0.688    | 12.0     | 19.2      | 0.760           | 9.9            | 16.4         | 0.694         | 19.4         | 34.9        | 
 | Ours (ViT-g)   | 0.662    | 13.2     | 20.2      | 0.778           | 9.2            | 15.3         | 0.697         | 19.6         | 35.2        |
 
-[//]: # (## 🌈 3D Reconstruction DEMOs)
+## 🌈 DEMOs
+### Zero-shot monocular metric depth & surface normal
+
+### Zero-shot metric 3D reconstruction
+
 
 [//]: # (### Monocular reconstruction for a Sequence)
 
