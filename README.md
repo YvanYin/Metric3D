@@ -1,13 +1,17 @@
 # 🚀 Metric3D Project 🚀
 
-**Official PyTorch implementation of "Metric3D: Towards Zero-shot Metric 3D Prediction from A Single Image" and "Metric3Dv2: A Versatile Monocular Geometric Foundation Model for Zero-shot Metric Depth and Surface Normal Estimation"**
+**Official PyTorch implementation of Metric3Dv1 and Metric3Dv2:**   
+
+[1] [Metric3D: Towards Zero-shot Metric 3D Prediction from A Single Image](https://arxiv.org/abs/2307.10984)  
+
+[2] Metric3Dv2: A Versatile Monocular Geometric Foundation Model for Zero-shot Metric Depth and Surface Normal Estimation
 
 <a href='https://jugghm.github.io/Metric3Dv2'><img src='https://img.shields.io/badge/project%20page-@Metric3D-yellow.svg'></a>
-<a href='https://arxiv.org/abs/2307.08695'><img src='https://img.shields.io/badge/arxiv-@Metric3Dv1-green'></a>
+<a href='https://arxiv.org/abs/2307.10984'><img src='https://img.shields.io/badge/arxiv-@Metric3Dv1-green'></a>
 <a href='https:'><img src='https://img.shields.io/badge/arxiv (on hold)-@Metric3Dv2-red'></a>
 <a href='https://huggingface.co/spaces/JUGGHM/Metric3D'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue'></a>
 
-[//]: # (### [Project Page]&#40;https://arxiv.org/abs/2307.08695&#41; | [v2 Paper]&#40;https://arxiv.org/abs/2307.08695&#41; | [v1 Arxiv]&#40;https://arxiv.org/abs/2307.08695&#41; | [Video]&#40;https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3&#41; | [Hugging Face 🤗]&#40;https://huggingface.co/spaces/JUGGHM/Metric3D&#41; )
+[//]: # (### [Project Page]&#40;https://arxiv.org/abs/2307.08695&#41; | [v2 Paper]&#40;https://arxiv.org/abs/2307.10984&#41; | [v1 Arxiv]&#40;https://arxiv.org/abs/2307.10984&#41; | [Video]&#40;https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3&#41; | [Hugging Face 🤗]&#40;https://huggingface.co/spaces/JUGGHM/Metric3D&#41; )
 
 ## News and TO DO LIST
 
@@ -16,7 +20,8 @@
 - [ ] Release the ViT-giant2 model
 - [ ] Focal length free mode
 - [ ] Floating noise removing mode
-- [ ] Improving HuggingFace Demo and Visualization 
+- [ ] Improving HuggingFace Demo and Visualization
+- [ ] Release training data.
 
 - `[2024/3/18]` HuggingFace GPU version updated!
 - `[2024/3/18]` [Project page](https://jugghm.github.io/Metric3Dv2/) released!
@@ -26,7 +31,7 @@
 - `[2023/4]` The Champion of [2nd Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC) in CVPR 2023
 
 ##  🌼 Abstract
-We present Metric3Dv2, a versatile geometric foundation model for zero-shot metric depth and surface normal estimation.
+Metric3D is a versatile geometric foundation model for high-quality and zero-shot **metric depth** and **surface normal** estimation from a single image. It excels at solving in-the-wild scene reconstruction. 
 
 ![page2](media/screenshots/page2.png)
 
