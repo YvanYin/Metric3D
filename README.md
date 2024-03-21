@@ -31,7 +31,7 @@
 - `[2023/4]` The Champion of [2nd Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC) in CVPR 2023
 
 ##  🌼 Abstract
-We present Metric3Dv2, a versatile geometric foundation model for zero-shot metric depth and surface normal estimation.
+Metric3D is a versatile geometric foundation model for high-quality and zero-shot **metric depth** and **surface normal** estimation from a single image. It excels at solving in-the-wild scene reconstruction. 
 
 ![page2](media/screenshots/page2.png)
 
