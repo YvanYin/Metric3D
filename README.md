@@ -2,7 +2,7 @@
 
 **Official PyTorch implementation of Metric3Dv1 and Metric3Dv2:**   
 
-[1] Metric3D: Towards Zero-shot Metric 3D Prediction from A Single Image  
+[1] [Metric3D: Towards Zero-shot Metric 3D Prediction from A Single Image](https://arxiv.org/abs/2307.10984)  
 
 [2] Metric3Dv2: A Versatile Monocular Geometric Foundation Model for Zero-shot Metric Depth and Surface Normal Estimation
 
