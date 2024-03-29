@@ -216,7 +216,7 @@ pip install -r requirements_v2.txt
 
 For ConvNeXt-L, it is 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements_v1.txt
 ```
 
 ### dataset annotation components
