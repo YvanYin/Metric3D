@@ -109,6 +109,9 @@ Our models also show powerful performance on normal benchmarks.
 ### Zero-shot metric 3D recovery
 <img src="media/gifs/demo_2.gif" width="600" height="337">  
 
+### Improving monocular SLAM
+<img src="media/gifs/demo_22.gif" width="600" height="337">  
+
 [//]: # (https://github.com/YvanYin/Metric3D/assets/35299633/f95815ef-2506-4193-a6d9-1163ea821268)
 
 [//]: # (https://github.com/YvanYin/Metric3D/assets/35299633/ed00706c-41cc-49ea-accb-ad0532633cc2)
