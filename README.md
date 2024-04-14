@@ -20,12 +20,12 @@
 - [ ] Focal length free mode
 - [ ] Floating noise removing mode
 - [ ] Improving HuggingFace Demo and Visualization
-- [x] Release training codes
-
+      
+- `[2024/4/11]` Training codes are released!
 - `[2024/3/18]` HuggingFace GPU version updated!
 - `[2024/3/18]` [Project page](https://jugghm.github.io/Metric3Dv2/) released!
 - `[2024/3/18]` Metric3D V2 models released, supporting metric depth and surface normal now!
-- `[2023/8/10]` Inference codes, pretrained weights, and demo released.
+- `[2023/8/10]` Inference codes, pre-trained weights, and demo released.
 - `[2023/7]` Metric3D accepted by ICCV 2023!
 - `[2023/4]` The Champion of [2nd Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC) in CVPR 2023
 
