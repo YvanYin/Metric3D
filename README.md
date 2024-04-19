@@ -264,7 +264,7 @@ Inference settings are defined as
 where the images will be first resized as the ```crop_size``` and then fed into the model.
 
 ## ✈️ Training
-Please refer to ```[training/README.md](./training/README.md)```
+Please refer to [training/README.md](./training/README.md).
 
 ## ✈️ Inference
 ### Download Checkpoint
