@@ -15,7 +15,7 @@
 
 ## News and TO DO LIST
 
-- [ ] Droid slam codes
+- [ ] Droid slam codes (Can refer to this repo: https://github.com/Jianxff/droid_metric)
 - [ ] Release the ViT-giant2 model
 - [ ] Focal length free mode
 - [ ] Floating noise removing mode
