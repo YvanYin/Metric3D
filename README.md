@@ -13,14 +13,7 @@
 
 [//]: # (### [Project Page]&#40;https://arxiv.org/abs/2307.08695&#41; | [v2 Paper]&#40;https://arxiv.org/abs/2307.10984&#41; | [v1 Arxiv]&#40;https://arxiv.org/abs/2307.10984&#41; | [Video]&#40;https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3&#41; | [Hugging Face 🤗]&#40;https://huggingface.co/spaces/JUGGHM/Metric3D&#41; )
 
-## News and TO DO LIST
-
-- [ ] Droid slam codes (Can refer to this repo: https://github.com/Jianxff/droid_metric)
-- [ ] Release the ViT-giant2 model
-- [ ] Focal length free mode
-- [ ] Floating noise removing mode
-- [ ] Improving HuggingFace Demo and Visualization
-      
+## News and TO DO LIST      
 - `[2024/4/11]` Training codes are released!
 - `[2024/3/18]` HuggingFace GPU version updated!
 - `[2024/3/18]` [Project page](https://jugghm.github.io/Metric3Dv2/) released!
