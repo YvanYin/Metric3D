@@ -8,7 +8,7 @@
 
 <a href='https://jugghm.github.io/Metric3Dv2'><img src='https://img.shields.io/badge/project%20page-@Metric3D-yellow.svg'></a>
 <a href='https://arxiv.org/abs/2307.10984'><img src='https://img.shields.io/badge/arxiv-@Metric3Dv1-green'></a>
-<a href='https:'><img src='https://img.shields.io/badge/arxiv (on hold)-@Metric3Dv2-red'></a>
+<a href='https://arxiv.org/abs/2404.15506'><img src='https://img.shields.io/badge/arxiv-@Metric3Dv2-red'></a>
 <a href='https://huggingface.co/spaces/JUGGHM/Metric3D'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue'></a>
 
 [//]: # (### [Project Page]&#40;https://arxiv.org/abs/2307.08695&#41; | [v2 Paper]&#40;https://arxiv.org/abs/2307.10984&#41; | [v1 Arxiv]&#40;https://arxiv.org/abs/2307.10984&#41; | [Video]&#40;https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3&#41; | [Hugging Face 🤗]&#40;https://huggingface.co/spaces/JUGGHM/Metric3D&#41; )
@@ -23,7 +23,7 @@
 ## News and TO DO LIST    
 - `[2024/4/25]` Weights for ViT-giant2 model released!  
 - `[2024/4/11]` Training codes are released!
-- `[2024/3/18]` HuggingFace GPU version updated!
+- `[2024/3/18]` [HuggingFace 🤗](https://huggingface.co/spaces/JUGGHM/Metric3D) GPU version updated!
 - `[2024/3/18]` [Project page](https://jugghm.github.io/Metric3Dv2/) released!
 - `[2024/3/18]` Metric3D V2 models released, supporting metric depth and surface normal now!
 - `[2023/8/10]` Inference codes, pre-trained weights, and demo released.
