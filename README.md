@@ -4,7 +4,7 @@
 
 [1] [Metric3D: Towards Zero-shot Metric 3D Prediction from A Single Image](https://arxiv.org/abs/2307.10984)  
 
-[2] [Metric3Dv2: A Versatile Monocular Geometric Foundation Model for Zero-shot Metric Depth and Surface Normal Estimation](./TPAMI_Metric3D_V2_under_review.pdf)
+[2] [Metric3Dv2: A Versatile Monocular Geometric Foundation Model for Zero-shot Metric Depth and Surface Normal Estimation](https://arxiv.org/abs/2404.15506)
 
 <a href='https://jugghm.github.io/Metric3Dv2'><img src='https://img.shields.io/badge/project%20page-@Metric3D-yellow.svg'></a>
 <a href='https://arxiv.org/abs/2307.10984'><img src='https://img.shields.io/badge/arxiv-@Metric3Dv1-green'></a>
@@ -305,6 +305,7 @@ Besides, metric 3D is not almighty. Some objects (chandeliers, drones...) / came
   title={A Versatile Monocular Geometric Foundation Model for Zero-shot Metric Depth and Surface Normal Estimation},
   author={Hu, Mu and Yin, Wei, and Zhang, Chi and Cai, Zhipeng and Long, Xiaoxiao and Chen, Hao, and Wang, Kaixuan and Yu, Gang and Shen, Chunhua and Shen, Shaojie},
   booktitle={arXiv},
+  eprint={2404.15506},
   year={2024}
 }
 ```
