@@ -20,7 +20,8 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric/surface-normals-estimation-on-nyu-depth-v2-1)](https://paperswithcode.com/sota/surface-normals-estimation-on-nyu-depth-v2-1?p=metric3d-v2-a-versatile-monocular-geometric) 
 
 
-## News and TO DO LIST      
+## News and TO DO LIST    
+- `[2024/4/25]` Weights for ViT-giant2 model released!  
 - `[2024/4/11]` Training codes are released!
 - `[2024/3/18]` HuggingFace GPU version updated!
 - `[2024/3/18]` [Project page](https://jugghm.github.io/Metric3Dv2/) released!
@@ -274,7 +275,7 @@ Please refer to [training/README.md](./training/README.md).
 | v1-L |   ConvNeXt-Large    | Hourglass-Decoder | [Download](https://drive.google.com/file/d/1KVINiBkVpJylx_6z1lAC7CQ4kmn-RJRN/view?usp=drive_link) |
 | v2-S | DINO2reg-ViT-Small  |    RAFT-4iter     | [Download](https://drive.google.com/file/d/1YfmvXwpWmhLg3jSxnhT7LvY0yawlXcr_/view?usp=drive_link) |
 | v2-L | DINO2reg-ViT-Large  |    RAFT-8iter     | [Download](https://drive.google.com/file/d/1eT2gG-kwsVzNy5nJrbm4KC-9DbNKyLnr/view?usp=drive_link) |
-| v2-g | DINO2reg-ViT-giant2 |    RAFT-8iter     | Coming soon |
+| v2-g | DINO2reg-ViT-giant2 |    RAFT-8iter     | [Download 🤗](https://huggingface.co/JUGGHM/Metric3D/blob/main/metric_depth_vit_giant2_800k.pth) |
 
 ### Dataset Mode
 1. put the trained ckpt file ```model.pth``` in ```weight/```.
