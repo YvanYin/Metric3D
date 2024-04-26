@@ -34,7 +34,7 @@
 - `[2023/4]` The Champion of [2nd Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC) in CVPR 2023
 
 ##  🌼 Abstract
-Metric3D is a versatile geometric foundation model for high-quality and zero-shot **metric depth** and **surface normal** estimation from a single image. It excels at solving in-the-wild scene reconstruction. 
+Metric3D is a strong and robust geometry foundation model for high-quality and zero-shot **metric depth** and **surface normal** estimation from a single image. It excels at solving in-the-wild scene reconstruction. It can directly help you measure the size of structures from a single image. Now it achieves SOTA performance on over 10 depth and normal benchmarks.
 
 ![depth_normal](media/screenshots/depth_normal.jpg)
 
