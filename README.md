@@ -23,7 +23,7 @@
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric/surface-normals-estimation-on-scannetv2)](https://paperswithcode.com/sota/surface-normals-estimation-on-scannetv2?p=metric3d-v2-a-versatile-monocular-geometric) 
 
-🏆 **Champion in [CVPR2023 Monocular Depth Estimation Challenge]**(https://jspenmar.github.io/MDEC)
+🏆 **Champion in [CVPR2023 Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC)**
 
 ## News and TO DO LIST    
 - `[2024/4/25]` Weights for ViT-giant2 model released!  
