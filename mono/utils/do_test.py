@@ -187,7 +187,7 @@ def transform_test_data_scalecano(rgb, intrinsic, data_basic):
     std = torch.tensor([58.395, 57.12, 57.375]).float()[:, None, None]
 
     # BGR to RGB
-    rgb = cv2.cvtColor(rgb, cv2.COLOR_BGR2RGB)
+    #rgb = cv2.cvtColor(rgb, cv2.COLOR_BGR2RGB)
 
     ori_h, ori_w, _ = rgb.shape
     ori_focal = (intrinsic[0] + intrinsic[1]) / 2
