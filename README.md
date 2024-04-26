@@ -19,8 +19,7 @@
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric/surface-normals-estimation-on-nyu-depth-v2-1)](https://paperswithcode.com/sota/surface-normals-estimation-on-nyu-depth-v2-1?p=metric3d-v2-a-versatile-monocular-geometric) 
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric/surface-normals-estimation-on-ibims-1)]
-(https://paperswithcode.com/sota/surface-normals-estimation-on-ibims-1?p=metric3d-v2-a-versatile-monocular-geometric) 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric/surface-normals-estimation-on-ibims-1)](https://paperswithcode.com/sota/surface-normals-estimation-on-ibims-1?p=metric3d-v2-a-versatile-monocular-geometric) 
 
 ## News and TO DO LIST    
 - `[2024/4/25]` Weights for ViT-giant2 model released!  
