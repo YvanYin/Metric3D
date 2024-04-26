@@ -776,6 +776,7 @@ class DinoVisionTransformer(nn.Module):
         num_register_tokens=0,
         interpolate_antialias=False,
         interpolate_offset=0.1,
+        multi_output=False,
         tuning_mode=None,
         **kwargs
     ):
@@ -832,6 +833,7 @@ class DinoVisionTransformer(nn.Module):
 
         self.cls_token = nn.Parameter(torch.zeros(1, 1, embed_dim))
         self.pos_embed = nn.Parameter(torch.zeros(1, num_patches + self.num_tokens, embed_dim))
+        self.multi_output = multi_output
         assert num_register_tokens >= 0
         self.register_tokens = (
             nn.Parameter(torch.zeros(1, num_register_tokens, embed_dim)) if num_register_tokens else None
@@ -989,12 +991,12 @@ class DinoVisionTransformer(nn.Module):
 
         x = self.prepare_tokens_with_masks(x, masks)
 
-        for blk in self.blocks:
-            x = blk(x)
+        #for blk in self.blocks:
+            #x = blk(x)
 
-        x_norm = self.norm(x)
-        if self.tuning_mode == 'ssf': 
-            x_norm = ssf_ada(x_norm, self.ssf_scale_1, self.ssf_shift_1)
+        #x_norm = self.norm(x)
+        #if self.tuning_mode == 'ssf': 
+            #x_norm = ssf_ada(x_norm, self.ssf_scale_1, self.ssf_shift_1)
 
         # return {
         #     "x_norm_clstoken": x_norm[:, 0],
@@ -1003,13 +1005,35 @@ class DinoVisionTransformer(nn.Module):
         #     "x_prenorm": x,
         #     "masks": masks,
         # }
-        features = []
-        features.append(x_norm)
-        features.append(x_norm)
-        features.append(x_norm)
-        features.append(x_norm)
-        return [features, (B, (H+pad_h)//self.patch_size, (W+pad_w)//self.patch_size, H, W, self.num_register_tokens)]
-        
+        # features = []
+        # features.append(x_norm)
+        # features.append(x_norm)
+        # features.append(x_norm)
+        # features.append(x_norm)
+        # return [features, (B, (H+pad_h)//self.patch_size, (W+pad_w)//self.patch_size, H, W, self.num_register_tokens)]
+
+        if self.multi_output == False:
+            for blk in self.blocks:
+                x = blk(x)
+            x_norm = self.norm(x)
+            if self.tuning_mode == 'ssf': 
+                x_norm = ssf_ada(x_norm, self.ssf_scale_1, self.ssf_shift_1)
+
+            features = []
+            features.append(x_norm)
+            features.append(x_norm)
+            features.append(x_norm)
+            features.append(x_norm)
+            return [features, (B, (H+pad_h)//self.patch_size, (W+pad_w)//self.patch_size, H, W, self.num_register_tokens)]
+        else:
+            features = []
+            for blk in self.blocks:
+                for idx, sub_blk in enumerate(blk):
+                    x = sub_blk(x)
+                    if (idx + 1) % (len(blk) // 4) == 0:
+                        features.append(x)
+
+            return [features, (B, (H+pad_h)//self.patch_size, (W+pad_w)//self.patch_size, H, W, self.num_register_tokens)]            
 
     def _get_intermediate_layers_not_chunked(self, x, n=1):
         x = self.prepare_tokens_with_masks(x)
@@ -1257,6 +1281,7 @@ def vit_giant2_reg(patch_size=14, num_register_tokens=4, checkpoint=None, tuning
         num_register_tokens=num_register_tokens,
         ffn_layer='swiglu',
         tuning_mode=tuning_mode,
+        multi_output=True,
         **kwargs,
     )
 
@@ -1274,7 +1299,7 @@ if __name__ == '__main__':
 
     #cfg.data_basic['crop_size']['0'] 
     #cfg.data_basic['crop_size']['1'] 
-    cfg = Config.fromfile('/opt/ml/project/mu.hu/projects/monodepth_vit/mono/configs/RAFTDecoder/vit.raft5.large.kitti.py')
+    cfg = Config.fromfile('/mu.hu/projects/monodepth_vit/mono/configs/RAFTDecoder/vit.raft5.large.kitti.py')
 
     #rgb = torch.arange(0, 2*3*1036*1036, 1).cuda().float().view(2, 3, 1036, 1036)
     rgb = torch.zeros(1, 3, 616, 1064).cuda()

@@ -1451,11 +1451,11 @@ if __name__ == '__main__':
 
     #cfg.data_basic['crop_size']['0'] 
     #cfg.data_basic['crop_size']['1'] 
-    cfg = Config.fromfile('/cpfs01/user/mu.hu/monodepth/mono/configs/HourglassDecoder/pub12.convlarge.0.3_150.py')
+    cfg = Config.fromfile('mu.hu/monodepth/mono/configs/HourglassDecoder/pub12.convlarge.0.3_150.py')
 
     #rgb = torch.arange(0, 2*3*1036*1036, 1).cuda().float().view(2, 3, 1036, 1036)
     rgb = torch.zeros(1, 3, 1400, 1680).cuda()
-    model = vit_large(checkpoint="/cpfs02/shared/public/custom/group_local_map/yvan/pretrained_weight_repo/vit/dinov2_vitl14_pretrain.pth", kwarg=cfg).cuda()
+    model = vit_large(checkpoint="pretrained_weight_repo/vit/dinov2_vitl14_pretrain.pth", kwarg=cfg).cuda()
 
     #import timm
     #model2 = timm.models.vision_transformer.vit_large_patch14_dinov2().cuda()

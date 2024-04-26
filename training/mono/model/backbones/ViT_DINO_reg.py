@@ -1081,12 +1081,12 @@ if __name__ == '__main__':
 
     #cfg.data_basic['crop_size']['0'] 
     #cfg.data_basic['crop_size']['1'] 
-    cfg = Config.fromfile('/cpfs01/shared/public/users/mu.hu/monodepth/mono/configs/RAFTDecoder/vit.raft.full2t.py')
+    cfg = Config.fromfile('mu.hu/monodepth/mono/configs/RAFTDecoder/vit.raft.full2t.py')
 
     #rgb = torch.arange(0, 2*3*1036*1036, 1).cuda().float().view(2, 3, 1036, 1036)
     rgb = torch.zeros(1, 3, 616, 1064).cuda()
     #model = vit_large_reg(checkpoint="/cpfs02/shared/public/groups/local_map/yvan/pretrained_weight_repo/vit/dinov2_vitl14_reg4_pretrain.pth", kwarg=cfg).cuda()
-    model = vit_giant2_reg(checkpoint="/cpfs02/shared/public/groups/local_map/yvan/pretrained_weight_repo/vit/dinov2_vitg14_reg4_pretrain.pth", kwarg=cfg).cuda()
+    model = vit_giant2_reg(checkpoint="pretrained_weight_repo/vit/dinov2_vitg14_reg4_pretrain.pth", kwarg=cfg).cuda()
 
     #import timm
     #model2 = timm.models.vision_transformer.vit_large_patch14_dinov2().cuda()

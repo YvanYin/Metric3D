@@ -789,7 +789,7 @@ if __name__ == "__main__":
         from mmcv.utils import Config
     except:
         from mmengine import Config
-    cfg = Config.fromfile('/cpfs01/shared/public/users/mu.hu/monodepth/mono/configs/RAFTDecoder/vit.raft.full2t.py')
+    cfg = Config.fromfile('/mu.hu/monodepth/mono/configs/RAFTDecoder/vit.raft.full2t.py')
     cfg.model.decode_head.in_channels = [384, 384, 384, 384]
     cfg.model.decode_head.feature_channels = [96, 192, 384, 768]
     cfg.model.decode_head.decoder_channels = [48, 96, 192, 384, 384]
