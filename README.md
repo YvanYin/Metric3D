@@ -36,8 +36,9 @@
 ##  🌼 Abstract
 Metric3D is a versatile geometric foundation model for high-quality and zero-shot **metric depth** and **surface normal** estimation from a single image. It excels at solving in-the-wild scene reconstruction. 
 
-![page2](media/screenshots/page2.png)
+![depth_normal](media/screenshots/depth_normal.jpg)
 
+![metrology](media/screenshots/metrology.png)
 
 
 ##  📝 Benchmarks 
