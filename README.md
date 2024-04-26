@@ -38,7 +38,7 @@ Metric3D is a versatile geometric foundation model for high-quality and zero-sho
 
 ![depth_normal](media/screenshots/depth_normal.jpg)
 
-![metrology](media/screenshots/metrology.png)
+![metrology](media/screenshots/metrology.jpg)
 
 
 ##  📝 Benchmarks 
