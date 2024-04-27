@@ -295,6 +295,9 @@ Please refer to [training/README.md](./training/README.md).
 3. run ```source test_vit.sh``` for transformers and ```source test.sh``` for convnets.
 As no intrinsics are provided, we provided by default 9 settings of focal length.
 
+### Metric3D and Droid-Slam
+If you are interested in combining metric3D and monocular visual slam system to achieve the metric slam, you can refer to this [repo](https://github.com/Jianxff/droid_metric).
+
 ## ❓ Q & A
 ### Q1: Why depth maps look good but pointclouds are distorted?
 Because the focal length is not properly set! Please find a proper focal length by modifying codes [here](mono/utils/do_test.py#309) yourself.  
