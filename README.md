@@ -13,15 +13,15 @@
 
 [//]: # (### [Project Page]&#40;https://arxiv.org/abs/2307.08695&#41; | [v2 Paper]&#40;https://arxiv.org/abs/2307.10984&#41; | [v1 Arxiv]&#40;https://arxiv.org/abs/2307.10984&#41; | [Video]&#40;https://www.youtube.com/playlist?list=PLEuyXJsWqUNd04nwfm9gFBw5FVbcaQPl3&#41; | [Hugging Face 🤗]&#40;https://huggingface.co/spaces/JUGGHM/Metric3D&#41; )
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric/monocular-depth-estimation-on-nyu-depth-v2)](https://paperswithcode.com/sota/monocular-depth-estimation-on-nyu-depth-v2?p=metric3d-v2-a-versatile-monocular-geometric) 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric-1/monocular-depth-estimation-on-nyu-depth-v2)](https://paperswithcode.com/sota/monocular-depth-estimation-on-nyu-depth-v2?p=metric3d-v2-a-versatile-monocular-geometric-1) 
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric/monocular-depth-estimation-on-kitti-eigen)](https://paperswithcode.com/sota/monocular-depth-estimation-on-kitti-eigen?p=metric3d-v2-a-versatile-monocular-geometric) 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric-1/monocular-depth-estimation-on-kitti-eigen)](https://paperswithcode.com/sota/monocular-depth-estimation-on-kitti-eigen?p=metric3d-v2-a-versatile-monocular-geometric-1) 
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric/surface-normals-estimation-on-nyu-depth-v2-1)](https://paperswithcode.com/sota/surface-normals-estimation-on-nyu-depth-v2-1?p=metric3d-v2-a-versatile-monocular-geometric) 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric-1/surface-normals-estimation-on-nyu-depth-v2-1)](https://paperswithcode.com/sota/surface-normals-estimation-on-nyu-depth-v2-1?p=metric3d-v2-a-versatile-monocular-geometric-1) 
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric/surface-normals-estimation-on-ibims-1)](https://paperswithcode.com/sota/surface-normals-estimation-on-ibims-1?p=metric3d-v2-a-versatile-monocular-geometric) 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric-1/surface-normals-estimation-on-ibims-1)](https://paperswithcode.com/sota/surface-normals-estimation-on-ibims-1?p=metric3d-v2-a-versatile-monocular-geometric-1) 
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric/surface-normals-estimation-on-scannetv2)](https://paperswithcode.com/sota/surface-normals-estimation-on-scannetv2?p=metric3d-v2-a-versatile-monocular-geometric) 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/metric3d-v2-a-versatile-monocular-geometric-1/surface-normals-estimation-on-scannetv2)](https://paperswithcode.com/sota/surface-normals-estimation-on-scannetv2?p=metric3d-v2-a-versatile-monocular-geometric-1) 
 
 🏆 **Champion in [CVPR2023 Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC)**
 
