@@ -311,7 +311,7 @@ Besides, metric 3D is not almighty. Some objects (chandeliers, drones...) / came
 
 ## 📧 Citation
 ```
-@article{metric3dv2,
+@article{hu2024metric3dv2,
   title={Metric3D v2: A Versatile Monocular Geometric Foundation Model for Zero-shot Metric Depth and Surface Normal Estimation},
   author={Hu, Mu and Yin, Wei and Zhang, Chi and Cai, Zhipeng and Long, Xiaoxiao and Chen, Hao and Wang, Kaixuan and Yu, Gang and Shen, Chunhua and Shen, Shaojie},
   journal={arXiv preprint arXiv:2404.15506},
