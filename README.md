@@ -274,6 +274,17 @@ where the images will be first resized as the ```crop_size``` and then fed into 
 Please refer to [training/README.md](./training/README.md).
 
 ## ✈️ Inference
+### News: Pytorch Hub is supported
+Now you can use Metric3D via Pytorch Hub with just few lines of code:
+```python
+import torch
+model = torch.hub.load('yvanyin/metric3d', 'metric3d_vit_small', pretrain=True)
+pred_depth, confidence, output_dict = model.inference({'input': rgb})
+```
+Supported models: `metric3d_convnext_large`, `metric3d_vit_small`, `metric3d_vit_large`, `metric3d_vit_giant2`.
+
+We've also provided a minimal working example in [hubconf.py](https://github.com/YvanYin/Metric3D/blob/main/hubconf.py#L122), which hopefully makes everything clearer.
+
 ### Download Checkpoint
 |      |       Encoder       |      Decoder      |                                               Link                                                |
 |:----:|:-------------------:|:-----------------:|:-------------------------------------------------------------------------------------------------:|

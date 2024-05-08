@@ -117,10 +117,6 @@ def metric3d_vit_giant2(pretrain=False, **kwargs):
   return model
 
 
-import os
-os.environ['HTTP_PROXY'] = 'http://192.168.195.225:7890'
-os.environ['HTTPS_PROXY'] = 'http://192.168.195.225:7890'
-
 
 if __name__ == '__main__':
   import cv2
