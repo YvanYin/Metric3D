@@ -15,7 +15,7 @@ model=dict(
 )
 
 
-max_value = 1000
+max_value = 200
 # configs of the canonical space
 data_basic=dict(
     canonical_space = dict(
@@ -25,7 +25,7 @@ data_basic=dict(
     depth_range=(0, 1),
     depth_normalize=(0.1, max_value),
     crop_size = (616, 1064),  # %28 = 0
-     clip_depth_range=(0.1, 1000),
+     clip_depth_range=(0.1, 200),
     vit_size=(616,1064)
 ) 
 
