@@ -1,5 +1,6 @@
 dependencies = ['torch', 'torchvision']
 
+import os
 import torch
 try:
   from mmcv.utils import Config, DictAction
@@ -7,25 +8,26 @@ except:
   from mmengine import Config, DictAction
 
 from mono.model.monodepth_model import get_configured_monodepth_model
+metric3d_dir = os.path.dirname(__file__)
 
 MODEL_TYPE = {
   'ConvNeXt-Tiny': {
     # TODO
   },
   'ConvNeXt-Large': {
-    'cfg_file': 'mono/configs/HourglassDecoder/convlarge.0.3_150.py',
+    'cfg_file': f'{metric3d_dir}/mono/configs/HourglassDecoder/convlarge.0.3_150.py',
     'ckpt_file': 'https://huggingface.co/JUGGHM/Metric3D/resolve/main/convlarge_hourglass_0.3_150_step750k_v1.1.pth',
   },
   'ViT-Small': {
-    'cfg_file': 'mono/configs/HourglassDecoder/vit.raft5.small.py',
+    'cfg_file': f'{metric3d_dir}/mono/configs/HourglassDecoder/vit.raft5.small.py',
     'ckpt_file': 'https://huggingface.co/JUGGHM/Metric3D/resolve/main/metric_depth_vit_small_800k.pth',
   },
   'ViT-Large': {
-    'cfg_file': 'mono/configs/HourglassDecoder/vit.raft5.large.py',
+    'cfg_file': f'{metric3d_dir}/mono/configs/HourglassDecoder/vit.raft5.large.py',
     'ckpt_file': 'https://huggingface.co/JUGGHM/Metric3D/resolve/main/metric_depth_vit_large_800k.pth',
   },
   'ViT-giant2': {
-    'cfg_file': 'mono/configs/HourglassDecoder/vit.raft5.giant2.py',
+    'cfg_file': f'{metric3d_dir}/mono/configs/HourglassDecoder/vit.raft5.giant2.py',
     'ckpt_file': 'https://huggingface.co/JUGGHM/Metric3D/resolve/main/metric_depth_vit_giant2_800k.pth',
   },
 }
