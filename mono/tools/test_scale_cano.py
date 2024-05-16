@@ -37,6 +37,7 @@ def parse_args():
     parser.add_argument('--options', nargs='+', action=DictAction, help='custom options')
     parser.add_argument('--launcher', choices=['None', 'pytorch', 'slurm', 'mpi', 'ror'], default='slurm', help='job launcher')
     parser.add_argument('--test_data_path', default='None', type=str, help='the path of test data')
+    parser.add_argument('--batch_size', default=1, type=int, help='the batch size for inference')
     args = parser.parse_args()
     return args
 
@@ -61,6 +62,7 @@ def main(args):
     if args.load_from is None:
         raise RuntimeError('Please set model path!')
     cfg.load_from = args.load_from
+    cfg.batch_size = args.batch_size
     
     # load data info
     data_info = {}
@@ -148,7 +150,8 @@ def main_worker(local_rank: int, cfg: dict, launcher: str, test_data: list):
         test_data,
         logger,
         cfg.distributed,
-        local_rank
+        local_rank,
+        cfg.batch_size,
     )
     
 if __name__ == '__main__':
