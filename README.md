@@ -25,7 +25,8 @@
 
 🏆 **Champion in [CVPR2023 Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC)**
 
-## News  
+## News 
+- `[2024/6/3]` ONNX is supported!  
 - `[2024/4/25]` Weights for ViT-giant2 model released!  
 - `[2024/4/11]` Training codes are released!
 - `[2024/3/18]` [HuggingFace 🤗](https://huggingface.co/spaces/JUGGHM/Metric3D) GPU version updated!
