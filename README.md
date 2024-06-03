@@ -295,7 +295,7 @@ We also provided a flexible working example in [metric3d_onnx_export.py](./onnx/
 python3 onnx/metric_3d_onnx_export.py metric3d_vit_small # metric3d_vit_large/metric3d_convnext_large
 
 # Test the inference of the ONNX model
-python3 onnx/test.onnx.py metric3d_vit_small.onnx
+python3 onnx/test_onnx.py metric3d_vit_small.onnx
 ```
 
 [ros2_vision_inference](https://github.com/Owen-Liuyuxuan/ros2_vision_inference) provides a Python example, showcasing a pipeline from image to point clouds and integrated into ROS2 systems.
