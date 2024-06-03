@@ -285,6 +285,20 @@ Supported models: `metric3d_convnext_large`, `metric3d_vit_small`, `metric3d_vit
 
 We also provided a minimal working example in [hubconf.py](https://github.com/YvanYin/Metric3D/blob/main/hubconf.py#L122), which hopefully makes everything clearer.
 
+### News: ONNX Exportation and Inference are supported
+
+We also provided a flexible working example in [metric3d_onnx_export.py](./onnx/metric3d_onnx_export.py) to export the Pytorch Hub model to ONNX format. We could test with the following commands:
+
+```bash
+# Export the model to ONNX model
+python3 onnx/metric_3d_onnx_export.py metric3d_vit_small # metric3d_vit_large/metric3d_convnext_large
+
+# Test the inference of the ONNX model
+python3 onnx/test.onnx.py metric3d_vit_small.onnx
+```
+
+[ros2_vision_inference](https://github.com/Owen-Liuyuxuan/ros2_vision_inference) provides a Python example, showcasing a pipeline from image to point clouds and integrated into ROS2 systems.
+
 ### Download Checkpoint
 |      |       Encoder       |      Decoder      |                                               Link                                                |
 |:----:|:-------------------:|:-----------------:|:-------------------------------------------------------------------------------------------------:|
