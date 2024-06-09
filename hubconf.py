@@ -13,7 +13,7 @@ metric3d_dir = os.path.dirname(__file__)
 MODEL_TYPE = {
   'ConvNeXt-Tiny': {
     'cfg_file': f'{metric3d_dir}/mono/configs/HourglassDecoder/convtiny.0.3_150.py',
-    'ckpt_file': 'https://huggingface.co/JUGGHM/Metric3D/blob/main/convtiny_hourglass_v1.pth',
+    'ckpt_file': 'https://huggingface.co/JUGGHM/Metric3D/resolve/main/convtiny_hourglass_v1.pth',
   },
   'ConvNeXt-Large': {
     'cfg_file': f'{metric3d_dir}/mono/configs/HourglassDecoder/convlarge.0.3_150.py',
