@@ -263,8 +263,8 @@ def do_scalecano_test_with_custom_data(
         
         for j, gt_depth in enumerate(gt_depths):
             normal_out = None
-            if 'normal_out_list'  in outputs.keys():
-                normal_out = outputs['normal_out_list'][0][j, :]
+            if 'prediction_normal'  in outputs.keys():
+                normal_out = outputs['prediction_normal'][j, :]
             
             postprocess_per_image(
                 i*bs+j,

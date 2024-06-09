@@ -281,10 +281,12 @@ Now you can use Metric3D via Pytorch Hub with just few lines of code:
 import torch
 model = torch.hub.load('yvanyin/metric3d', 'metric3d_vit_small', pretrain=True)
 pred_depth, confidence, output_dict = model.inference({'input': rgb})
+pred_normal = output_dict['prediction_normal'][:, :3, :, :] # only available for Metric3Dv2 i.e., ViT models
+normal_confidence = output_dict['prediction_normal'][:, 3, :, :] # see https://arxiv.org/abs/2109.09881 for details
 ```
-Supported models: `metric3d_convnext_large`, `metric3d_vit_small`, `metric3d_vit_large`, `metric3d_vit_giant2`.
+Supported models: `metric3d_convnext_tiny`, `metric3d_convnext_large`, `metric3d_vit_small`, `metric3d_vit_large`, `metric3d_vit_giant2`.
 
-We also provided a minimal working example in [hubconf.py](https://github.com/YvanYin/Metric3D/blob/main/hubconf.py#L122), which hopefully makes everything clearer.
+We also provided a minimal working example in [hubconf.py](https://github.com/YvanYin/Metric3D/blob/main/hubconf.py#L145), which hopefully makes everything clearer.
 
 ### News: ONNX Exportation and Inference are supported
 

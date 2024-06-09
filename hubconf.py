@@ -12,7 +12,8 @@ metric3d_dir = os.path.dirname(__file__)
 
 MODEL_TYPE = {
   'ConvNeXt-Tiny': {
-    # TODO
+    'cfg_file': f'{metric3d_dir}/mono/configs/HourglassDecoder/convtiny.0.3_150.py',
+    'ckpt_file': 'https://huggingface.co/JUGGHM/Metric3D/blob/main/convtiny_hourglass_v1.pth',
   },
   'ConvNeXt-Large': {
     'cfg_file': f'{metric3d_dir}/mono/configs/HourglassDecoder/convlarge.0.3_150.py',
@@ -33,6 +34,27 @@ MODEL_TYPE = {
 }
 
 
+
+def metric3d_convnext_tiny(pretrain=False, **kwargs):
+  '''
+  Return a Metric3D model with ConvNeXt-Large backbone and Hourglass-Decoder head.
+  For usage examples, refer to: https://github.com/YvanYin/Metric3D/blob/main/hubconf.py
+  Args:
+    pretrain (bool): whether to load pretrained weights.
+  Returns:
+    model (nn.Module): a Metric3D model.
+  '''
+  cfg_file = MODEL_TYPE['ConvNeXt-Tiny']['cfg_file']
+  ckpt_file = MODEL_TYPE['ConvNeXt-Tiny']['ckpt_file']
+
+  cfg = Config.fromfile(cfg_file)
+  model = get_configured_monodepth_model(cfg)
+  if pretrain:
+    model.load_state_dict(
+      torch.hub.load_state_dict_from_url(ckpt_file)['model_state_dict'], 
+      strict=False,
+    )
+  return model
 
 def metric3d_convnext_large(pretrain=False, **kwargs):
   '''
@@ -122,6 +144,7 @@ def metric3d_vit_giant2(pretrain=False, **kwargs):
 
 if __name__ == '__main__':
   import cv2
+  import numpy as np
   #### prepare data
   rgb_file = 'data/kitti_demo/rgb/0000000050.png'
   depth_file = 'data/kitti_demo/depth/0000000050.png'
@@ -186,3 +209,16 @@ if __name__ == '__main__':
     mask = (gt_depth > 1e-8)
     abs_rel_err = (torch.abs(pred_depth[mask] - gt_depth[mask]) / gt_depth[mask]).mean()
     print('abs_rel_err:', abs_rel_err.item())
+
+  #### normal are also available
+  if 'prediction_normal' in output_dict: # only available for Metric3Dv2, i.e. vit model
+    pred_normal = output_dict['prediction_normal'][:, :3, :, :]
+    normal_confidence = output_dict['prediction_normal'][:, 3, :, :] # see https://arxiv.org/abs/2109.09881 for details
+    # un pad and resize to some size if needed
+    pred_normal = pred_normal.squeeze()
+    pred_normal = pred_normal[:, pad_info[0] : pred_normal.shape[1] - pad_info[1], pad_info[2] : pred_normal.shape[2] - pad_info[3]]
+    # you can now do anything with the normal
+    # such as visualize pred_normal
+    pred_normal_vis = pred_normal.cpu().numpy().transpose((1, 2, 0))
+    pred_normal_vis = (pred_normal_vis + 1) / 2
+    cv2.imwrite('normal_vis.png', (pred_normal_vis * 255).astype(np.uint8))
