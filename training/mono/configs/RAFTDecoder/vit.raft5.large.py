@@ -1,5 +1,5 @@
 _base_=['../_base_/losses/all_losses.py',
-       '../_base_/models/encoder_decoder/dino_vit_small_reg.dpt_raft.py',
+       '../_base_/models/encoder_decoder/dino_vit_large_reg.dpt_raft.py',
 
        '../_base_/datasets/ddad.py',
        '../_base_/datasets/_data_base_.py',
