@@ -79,8 +79,8 @@ Our models rank 1st on the routing KITTI and NYU benchmarks.
 | ZeroDepth     | ResNet-18   | 0.968      | 0.996                   | 0.057           | 2.087         | 0.083            | 0.954    | 0.995           | 0.074         | 0.269       | 0.103        |
 | IEBins        | SwinT-Large | 0.978      | 0.998                  | 0.050           | 2.011         | 0.075            | 0.936    | 0.992           | 0.087         | 0.314       | 0.031        |
 | DepthAnything | ViT-Large   | 0.982      | 0.998                  | 0.046           | 1.985         | 0.069            | 0.984    | 0.998           | 0.056         | 0.206       | 0.024        |
-| Ours          | ViT-Large   | 0.985      | 0.998       | 0.999                        | 1.985         | 0.064            | 0.989    | 0.998           | 0.047         | 0.183       | 0.020        |
-| Ours          | ViT-giant2  | 0.989      | 0.998       | 1.000                        | 1.766         | 0.060            | 0.987    | 0.997           | 0.045         | 0.187       | 0.015        |
+| Ours          | ViT-Large   | 0.985      | 0.998       | 0.044                        | 1.985         | 0.064            | 0.989    | 0.998           | 0.047         | 0.183       | 0.020        |
+| Ours          | ViT-giant2  | 0.989      | 0.998       | 0.039                        | 1.766         | 0.060            | 0.987    | 0.997           | 0.045         | 0.187       | 0.015        |
 
 ### Affine-invariant Depth
 Even compared to recent affine-invariant depth methods (Marigold and Depth Anything), our metric-depth (and normal) models still show superior performance. 
