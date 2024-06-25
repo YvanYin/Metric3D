@@ -26,6 +26,7 @@
 🏆 **Champion in [CVPR2023 Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC)**
 
 ## News 
+- `[2024/6/25]` Json files for KITTI datasets now available! Refer to [Training](./training/README.md) for more details... 
 - `[2024/6/3]` ONNX is supported!  
 - `[2024/4/25]` Weights for ViT-giant2 model released!  
 - `[2024/4/11]` Training codes are released!
@@ -273,6 +274,7 @@ where the images will be first resized as the ```crop_size``` and then fed into 
 
 ## ✈️ Training
 Please refer to [training/README.md](./training/README.md).
+Now we provide complete json files for KITTI fine-tuning.
 
 ## ✈️ Inference
 ### News: Pytorch Hub is supported
