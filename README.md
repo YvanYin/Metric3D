@@ -26,8 +26,8 @@
 🏆 **Champion in [CVPR2023 Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC)**
 
 ## News 
-- `[2024/6/25]` Json files for KITTI datasets now available! Refer to [Training](./training/README.md) for more details... 
-- `[2024/6/3]` ONNX is supported!  
+- `[2024/6/25]` Json files for KITTI datasets now available! Refer to [Training](./training/README.md) for more details 
+- `[2024/6/3]` ONNX is supported! We appreciate [@xenova](https://github.com/xenova) for their remarkable efforts! 
 - `[2024/4/25]` Weights for ViT-giant2 model released!  
 - `[2024/4/11]` Training codes are released!
 - `[2024/3/18]` [HuggingFace 🤗](https://huggingface.co/spaces/JUGGHM/Metric3D) GPU version updated!
@@ -277,6 +277,17 @@ Please refer to [training/README.md](./training/README.md).
 Now we provide complete json files for KITTI fine-tuning.
 
 ## ✈️ Inference
+### News: Improved ONNX support with dynamic shapes (Feature owned by [@xenova](https://github.com/xenova). Appreciate for this outstanding contribution 🚩🚩🚩)
+
+Now the onnx supports are availble for all three models with varying shapes. Refer to [issue117](https://github.com/YvanYin/Metric3D/issues/117) for more details.
+
+### Improved ONNX Checkpoints Available now 
+|      |       Encoder       |      Decoder      |                                               Link                                                |
+|:----:|:-------------------:|:-----------------:|:-------------------------------------------------------------------------------------------------:|
+| v2-S-ONNX | DINO2reg-ViT-Small  |    RAFT-4iter     | [Download 🤗](https://huggingface.co/onnx-community/metric3d-vit-small) |
+| v2-L-ONNX | DINO2reg-ViT-Large  |    RAFT-8iter     | [Download 🤗](https://huggingface.co/onnx-community/metric3d-vit-large) |
+| v2-g-ONNX | DINO2reg-ViT-giant2 |    RAFT-8iter     | [Download 🤗](https://huggingface.co/onnx-community/metric3d-vit-giant2) |
+
 ### News: Pytorch Hub is supported
 Now you can use Metric3D via Pytorch Hub with just few lines of code:
 ```python
