@@ -359,6 +359,8 @@ def postprocess_per_image(i, pred_depth, gt_depth, intrinsic, rgb_origin, normal
         H, W = pred_normal.shape[1:]
         pred_normal = pred_normal[ :, pad[0]:H-pad[1], pad[2]:W-pad[3]]
 
+        pred_normal = torch.nn.functional.interpolate(pred_normal[None, :], size=[rgb_origin.shape[0], rgb_origin.shape[1]], mode='bilinear', align_corners=True).squeeze()
+
         gt_normal = None
         #if gt_normal_flag:
         if False:
