@@ -26,6 +26,7 @@
 🏆 **Champion in [CVPR2023 Monocular Depth Estimation Challenge](https://jspenmar.github.io/MDEC)**
 
 ## News 
+- `[2024/8]` Metric3Dv2 is accepted by TPAMI!
 - `[2024/7/5]` Our stable-diffusion alternative GeoWizard has now been accepted by ECCV 2024! Check NOW the [repository](https://github.com/fuxiao0719/GeoWizard) and [paper](https://arxiv.org/abs/2403.12013) for the finest-grained geometry ever! 🎉🎉🎉
 - `[2024/6/25]` Json files for KITTI datasets now available! Refer to [Training](./training/README.md) for more details 
 - `[2024/6/3]` ONNX is supported! We appreciate [@xenova](https://github.com/xenova) for their remarkable efforts! 
