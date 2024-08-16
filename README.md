@@ -290,6 +290,8 @@ Now the onnx supports are availble for all three models with varying shapes. Ref
 | v2-L-ONNX | DINO2reg-ViT-Large  |    RAFT-8iter     | [Download 🤗](https://huggingface.co/onnx-community/metric3d-vit-large) |
 | v2-g-ONNX | DINO2reg-ViT-giant2 |    RAFT-8iter     | [Download 🤗](https://huggingface.co/onnx-community/metric3d-vit-giant2) |
 
+One additional [reminder](https://github.com/YvanYin/Metric3D/issues/143#issue-2444506808) for using these onnx models is reported by @norbertlink.
+
 ### News: Pytorch Hub is supported
 Now you can use Metric3D via Pytorch Hub with just few lines of code:
 ```python
