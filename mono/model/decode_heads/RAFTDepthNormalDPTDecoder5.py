@@ -216,7 +216,7 @@ def compute_depth_expectation(prob, depth_values):
     return depth
 
 def interpolate_float32(x, size=None, scale_factor=None, mode='nearest', align_corners=None):
-    with torch.autocast(device_type='cuda', dtype=torch.bfloat16, enabled=False):
+    with torch.autocast(device_type='cuda', dtype=torch.float, enabled=False):
         return F.interpolate(x.float(), size=size, scale_factor=scale_factor, mode=mode, align_corners=align_corners)
 
 # def upflow8(flow, mode='bilinear'):
@@ -225,7 +225,7 @@ def interpolate_float32(x, size=None, scale_factor=None, mode='nearest', align_c
 
 def upflow4(flow, mode='bilinear'):
     new_size = (4 * flow.shape[2], 4 * flow.shape[3])
-    with torch.autocast(device_type='cuda', dtype=torch.bfloat16, enabled=False):
+    with torch.autocast(device_type='cuda', dtype=torch.float, enabled=False):
         return  F.interpolate(flow, size=new_size, mode=mode, align_corners=True)
 
 def coords_grid(batch, ht, wd):

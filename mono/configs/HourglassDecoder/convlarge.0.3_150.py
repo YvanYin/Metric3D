@@ -17,7 +17,7 @@ data_basic=dict(
         focal_length=1000.0,
     ),
     depth_range=(0, 1),
-    depth_normalize=(0.3, 150),
+    depth_normalize=(0.3, 500),
     crop_size = (544, 1216),
 ) 
 
