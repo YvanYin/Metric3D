@@ -85,4 +85,4 @@ def save_point_cloud(pcd, rgb, filename, binary=True):
                     'property uchar blue\n' \
                     'end_header' % r.shape[0]
         # ---- Save ply data to disk
-        np.savetxt(filename, np.column_stack[x, y, z, r, g, b], fmt='%f %f %f %d %d %d', header=ply_head, comments='')
+        np.savetxt(filename, np.column_stack([x, y, z, r, g, b]), fmt='%f %f %f %d %d %d', header=ply_head, comments='')
