@@ -355,6 +355,15 @@ First be sure all black padding regions at image boundaries are cropped out. The
 Besides, metric 3D is not almighty. Some objects (chandeliers, drones...) / camera views (aerial view, bev...) do not occur frequently in the training datasets. We will going deeper into this and release more powerful solutions.
 
 ## 📧 Citation
+If you use this toolbox in your research or wish to refer to the baseline results published here, please use the following BibTeX entries:
+```
+@misc{Metric3D,
+  author =       {Yin, Wei and Hu, Mu and Zhang, Chi and Cai, Zhipeng and Long, Xiaoxiao and Chen, Hao and Wang, Kaixuan and Yu, Gang and Shen, Chunhua and Shen, Shaojie},
+  title =        {{Metric3D}: A Toolbox for Zero-shot Metric Depth Estimation},
+  howpublished = {\url{https://github.com/YvanYin/Metric3D}},
+  year =         {2014}
+}
+```
 <!-- ```
 @article{hu2024metric3dv2,
   title={Metric3D v2: A Versatile Monocular Geometric Foundation Model for Zero-shot Metric Depth and Surface Normal Estimation},
