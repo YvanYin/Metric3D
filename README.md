@@ -361,7 +361,7 @@ If you use this toolbox in your research or wish to refer to the baseline result
   author =       {Yin, Wei and Hu, Mu},
   title =        {{Metric3D}: A Toolbox for Zero-shot Metric Depth Estimation},
   howpublished = {\url{https://github.com/YvanYin/Metric3D}},
-  year =         {2014}
+  year =         {2024}
 }
 ```
 <!-- ```
