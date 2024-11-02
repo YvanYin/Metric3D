@@ -358,7 +358,7 @@ Besides, metric 3D is not almighty. Some objects (chandeliers, drones...) / came
 If you use this toolbox in your research or wish to refer to the baseline results published here, please use the following BibTeX entries:
 ```
 @misc{Metric3D,
-  author =       {Yin, Wei and Hu, Mu and Zhang, Chi and Cai, Zhipeng and Long, Xiaoxiao and Chen, Hao and Wang, Kaixuan and Yu, Gang and Shen, Chunhua and Shen, Shaojie},
+  author =       {Yin, Wei and Hu, Mu},
   title =        {{Metric3D}: A Toolbox for Zero-shot Metric Depth Estimation},
   howpublished = {\url{https://github.com/YvanYin/Metric3D}},
   year =         {2014}
