@@ -347,7 +347,7 @@ If you are interested in combining metric3D and monocular visual slam system to 
 ### Q1: Why depth maps look good but pointclouds are distorted?
 Because the focal length is not properly set! Please find a proper focal length by modifying codes [here](mono/utils/do_test.py#309) yourself.  
 
-### Q2: Why the pointclouds are too slow to be generated?
+### Q2: Why the point clouds are too slow to be generated?
 Because the images are too large! Use smaller ones instead. 
 
 ### Q3: Why predicted depth maps are not satisfactory?
@@ -372,6 +372,7 @@ If you use this toolbox in your research or wish to refer to the baseline result
   year={2024}
 }
 ``` -->
+Also please cite our papers if this help your research.
 ```
 @article{hu2024metric3d,
   title={Metric3D v2: A Versatile Monocular Geometric Foundation Model for Zero-shot Metric Depth and Surface Normal Estimation},
