@@ -374,11 +374,12 @@ If you use this toolbox in your research or wish to refer to the baseline result
 ``` -->
 Also please cite our papers if this help your research.
 ```
-@article{hu2024metric3d,
-  title={Metric3D v2: A Versatile Monocular Geometric Foundation Model for Zero-shot Metric Depth and Surface Normal Estimation},
+@article{hu2024metric3dv2,
+  title={Metric3d v2: A versatile monocular geometric foundation model for zero-shot metric depth and surface normal estimation},
   author={Hu, Mu and Yin, Wei and Zhang, Chi and Cai, Zhipeng and Long, Xiaoxiao and Chen, Hao and Wang, Kaixuan and Yu, Gang and Shen, Chunhua and Shen, Shaojie},
-  journal={arXiv preprint arXiv:2404.15506},
-  year={2024}
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year={2024},
+  publisher={IEEE}
 }
 ```
 ```
