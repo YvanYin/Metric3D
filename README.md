@@ -359,7 +359,7 @@ If you use this toolbox in your research or wish to refer to the baseline result
 ```
 @misc{Metric3D,
   author =       {Yin, Wei and Hu, Mu},
-  title =        {{Metric3D}: A Toolbox for Zero-shot Metric Depth Estimation},
+  title =        {OpenMetric3D: An Open Toolbox for Monocular Depth Estimation},
   howpublished = {\url{https://github.com/YvanYin/Metric3D}},
   year =         {2024}
 }
