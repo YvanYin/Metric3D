@@ -2,6 +2,7 @@ dependencies = ['torch', 'torchvision']
 
 import os
 import torch
+import os
 try:
   from mmcv.utils import Config, DictAction
 except:
@@ -65,14 +66,15 @@ def metric3d_convnext_large(pretrain=False, **kwargs):
   Returns:
     model (nn.Module): a Metric3D model.
   '''
-  cfg_file = MODEL_TYPE['ConvNeXt-Large']['cfg_file']
+  dirname = os.path.dirname(__file__)
+  cfg_file = os.path.join(dirname, MODEL_TYPE['ConvNeXt-Large']['cfg_file'])
   ckpt_file = MODEL_TYPE['ConvNeXt-Large']['ckpt_file']
 
   cfg = Config.fromfile(cfg_file)
   model = get_configured_monodepth_model(cfg)
   if pretrain:
     model.load_state_dict(
-      torch.hub.load_state_dict_from_url(ckpt_file)['model_state_dict'], 
+      torch.hub.load_state_dict_from_url(ckpt_file)['model_state_dict'],
       strict=False,
     )
   return model
@@ -86,14 +88,15 @@ def metric3d_vit_small(pretrain=False, **kwargs):
   Returns:
     model (nn.Module): a Metric3D model.
   '''
-  cfg_file = MODEL_TYPE['ViT-Small']['cfg_file']
+  dirname = os.path.dirname(__file__)
+  cfg_file = os.path.join(dirname, MODEL_TYPE['ViT-Small']['cfg_file'])
   ckpt_file = MODEL_TYPE['ViT-Small']['ckpt_file']
 
   cfg = Config.fromfile(cfg_file)
   model = get_configured_monodepth_model(cfg)
   if pretrain:
     model.load_state_dict(
-      torch.hub.load_state_dict_from_url(ckpt_file)['model_state_dict'], 
+      torch.hub.load_state_dict_from_url(ckpt_file)['model_state_dict'],
       strict=False,
     )
   return model
@@ -107,14 +110,15 @@ def metric3d_vit_large(pretrain=False, **kwargs):
   Returns:
     model (nn.Module): a Metric3D model.
   '''
-  cfg_file = MODEL_TYPE['ViT-Large']['cfg_file']
+  dirname = os.path.dirname(__file__)
+  cfg_file = os.path.join(dirname, MODEL_TYPE['ViT-Large']['cfg_file'])
   ckpt_file = MODEL_TYPE['ViT-Large']['ckpt_file']
 
   cfg = Config.fromfile(cfg_file)
   model = get_configured_monodepth_model(cfg)
   if pretrain:
     model.load_state_dict(
-      torch.hub.load_state_dict_from_url(ckpt_file)['model_state_dict'], 
+      torch.hub.load_state_dict_from_url(ckpt_file)['model_state_dict'],
       strict=False,
     )
   return model
@@ -128,14 +132,15 @@ def metric3d_vit_giant2(pretrain=False, **kwargs):
   Returns:
     model (nn.Module): a Metric3D model.
   '''
-  cfg_file = MODEL_TYPE['ViT-giant2']['cfg_file']
+  dirname = os.path.dirname(__file__)
+  cfg_file = os.path.join(dirname, MODEL_TYPE['ViT-giant2']['cfg_file'])
   ckpt_file = MODEL_TYPE['ViT-giant2']['ckpt_file']
 
   cfg = Config.fromfile(cfg_file)
   model = get_configured_monodepth_model(cfg)
   if pretrain:
     model.load_state_dict(
-      torch.hub.load_state_dict_from_url(ckpt_file)['model_state_dict'], 
+      torch.hub.load_state_dict_from_url(ckpt_file)['model_state_dict'],
       strict=False,
     )
   return model
@@ -188,7 +193,7 @@ if __name__ == '__main__':
   # un pad
   pred_depth = pred_depth.squeeze()
   pred_depth = pred_depth[pad_info[0] : pred_depth.shape[0] - pad_info[1], pad_info[2] : pred_depth.shape[1] - pad_info[3]]
-  
+
   # upsample to original size
   pred_depth = torch.nn.functional.interpolate(pred_depth[None, None, :, :], rgb_origin.shape[:2], mode='bilinear').squeeze()
   ###################### canonical camera space ######################
@@ -198,14 +203,14 @@ if __name__ == '__main__':
   pred_depth = pred_depth * canonical_to_real_scale # now the depth is metric
   pred_depth = torch.clamp(pred_depth, 0, 300)
 
-  #### you can now do anything with the metric depth 
+  #### you can now do anything with the metric depth
   # such as evaluate predicted depth
   if depth_file is not None:
     gt_depth = cv2.imread(depth_file, -1)
     gt_depth = gt_depth / gt_depth_scale
     gt_depth = torch.from_numpy(gt_depth).float().cuda()
     assert gt_depth.shape == pred_depth.shape
-    
+
     mask = (gt_depth > 1e-8)
     abs_rel_err = (torch.abs(pred_depth[mask] - gt_depth[mask]) / gt_depth[mask]).mean()
     print('abs_rel_err:', abs_rel_err.item())
