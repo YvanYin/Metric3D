@@ -281,7 +281,7 @@ Now we provide complete json files for KITTI fine-tuning.
 ## ✈️ Inference
 ### News: Improved ONNX support with dynamic shapes (Feature owned by [@xenova](https://github.com/xenova). Appreciate for this outstanding contribution 🚩🚩🚩)
 
-Now the onnx supports are availble for all three models with varying shapes. Refer to [issue117](https://github.com/YvanYin/Metric3D/issues/117) for more details.
+Now the onnx supports are available for all three models with varying shapes. Refer to [issue117](https://github.com/YvanYin/Metric3D/issues/117) for more details.
 
 ### Improved ONNX Checkpoints Available now 
 |      |       Encoder       |      Decoder      |                                               Link                                                |
